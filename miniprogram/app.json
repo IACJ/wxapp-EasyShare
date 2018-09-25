@@ -1,6 +1,12 @@
 {
   "cloud": true,
   "pages": [
+    "pages/test/test",
+    "pages/myindex/myindex",
+    "pages/info/info",
+    "pages/map/map",
+    "pages/me/me",
+
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -10,10 +16,37 @@
     "pages/chooseLib/chooseLib"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
-    "navigationBarTextStyle": "black"
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#2a579a",
+    "navigationBarTitleText": "Easy Share",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "position": "fixed",
+    "backgroundColor": "#2a579a",
+    "color": "#DCEDC8",
+    "selectedColor": "#DCEDC8",
+    "list": [
+      {
+        "pagePath": "pages/myindex/myindex",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/info/info",
+        "text": "资讯"
+      },
+      {
+        "pagePath": "pages/test/test",
+        "text": "测试"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的"
+      }
+    ]
   }
 }

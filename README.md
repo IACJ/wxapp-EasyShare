@@ -10,3 +10,8 @@
 
 - [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 
+
+## Git 使用
+1. 任意目录 git clone https://github.com/IACJ/wxapp-EasyShare
+2. git status 查看更改的文件
+3. git diff 查看具体更改，按q退出vim编辑器
