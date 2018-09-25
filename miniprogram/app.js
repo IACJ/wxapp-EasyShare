@@ -7,7 +7,9 @@ App({
     } else {
       wx.cloud.init({
         traceUser: true,
+        env: 'test-share-92a8ff'
       })
+      console.log('wx.cloud 已初始化')
     }
 
     this.globalData = {}

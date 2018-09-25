@@ -98,5 +98,26 @@ Page({
       }
     })
 
+  },
+
+  cloudFn_Add: function(e){
+    console.log(e)
+    wx.cloud.callFunction({
+      // 要调用的云函数名称
+      name: 'cloudFn_Add',
+      // 传递给云函数的参数
+      data: {
+        x: 1,
+        y: 2,
+      },
+      success: res => {
+        console.log('call success')
+        console.log(res)
+      },
+      fail: err => {
+        console.log('call fail')
+        console.log(err)
+      }
+    })
   }
 })
