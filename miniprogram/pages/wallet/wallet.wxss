@@ -1,0 +1,82 @@
+/* pages/wallet/wallet.wxss */
+ 
+page{
+  background-color: #f3f7f3;
+}
+.overage{
+    
+    background-color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    
+}
+.overage-header{
+    font-size: 20px;
+}
+.overage-amount{
+    display: inline-block;
+    padding: 20px 0;
+    font-size: 50px;
+    font-weight: 500;
+}
+.overage-desc{
+    padding: 10px 30px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: 1px solid #666;
+}
+.my-deposit{
+   
+  height: 40px;
+  margin-top: 2px;
+  display: flex;  
+  flex-direction: row;  
+  justify-content: space-between;
+  background-color: #fff;
+  padding-left:20px;
+ padding-right: 20px;
+ padding-top: 10px;}
+
+.my-invcode{
+   height: 40px;
+  margin-top: 15px;
+  display: flex;  
+  flex-direction: row;  
+  justify-content: space-between;
+  background-color: #fff;
+  padding-left:20px;
+ padding-right: 20px;
+ padding-top: 10px;
+ 
+}
+.c-y{
+    color: #b9dd08;
+     
+}
+.c-g{
+    padding-top: 20px;
+    padding-right: -10px;
+}
+.button{
+  height: 60px;
+}
+.btn-charge{
+  width: 80%;
+  height: 40px;
+  background-color: #d8f440;
+  top:20px;
+  
+}
+.my-ticket {
+  height: 40px;
+  margin-top: 20px;
+  display: flex;  
+  flex-direction: row;  
+  justify-content: space-between;
+ background-color: #fff;
+ padding-left:20px;
+ padding-right: 20px;
+ padding-top: 10px;
+}
+  

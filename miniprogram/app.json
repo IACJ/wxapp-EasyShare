@@ -6,6 +6,9 @@
     "pages/info/info",
     "pages/map/map",
     "pages/me/me",
+    "pages/wallet/wallet",
+    "pages/charge/charge",
+    "pages/profile/profile",
 
     "pages/index/index",
     "pages/userConsole/userConsole",
