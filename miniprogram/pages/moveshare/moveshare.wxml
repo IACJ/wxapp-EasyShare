@@ -1,0 +1,23 @@
+<!--pages/moveshare/moveshare.wxml-->
+<view class='page'>
+  <view class='title'> 移动物品共享 </view>
+
+
+  <view class='row'> 
+    <view class='item'> 共享汽车</view>
+    <view class='item'> 共享单车</view>
+    <view class='item'> 共享三轮</view>
+  </view>
+
+  <view class='row'> 
+    <view class='item'> 共享充电宝</view>
+    <view class='item'> 共享摄像机</view>
+    <view class='item'> 共享医疗箱</view>
+  </view>
+
+  <view class='row'> 
+    <view class='item'> 共享雨伞</view>
+    <view class='item'> 共享滑板</view>
+    <view class='item'> 共享轮椅</view>
+  </view>
+</view>

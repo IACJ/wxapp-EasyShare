@@ -1,4 +1,4 @@
-// pages/myindex/myindex.js
+// pages/moveshare/moveshare.js
 Page({
 
   /**
@@ -62,18 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  btnMoveShare: function(e) {
-    console.log(e)
-    wx.navigateTo({
-      url: '/pages/moveshare/moveshare',
-    })
-  },
-  btnFixShare: function(e) {
-    console.log(e)
-    wx.navigateTo({
-      url: '/pages/fixshare/fixshare',
-    })
   }
 })
