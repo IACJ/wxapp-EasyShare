@@ -1,4 +1,13 @@
 // pages/test/test.js
+const testDB = wx.cloud.database({
+  env: 'test-share-92a8ff'
+})
+if (testDB) {
+  console.log('连接ok')
+} else {
+  console.log('连接fail')
+}
+const col=testDB.collection('todos')
 Page({
 
   /**
@@ -66,18 +75,7 @@ Page({
 
   wxapp_Add: function() {
     console.log('小程序端_新增数据')
-
-    const testDB = wx.cloud.database({
-      env: 'test-share-92a8ff'
-    })
-    if (testDB) {
-      console.log('连接ok')
-    }else{
-      console.log('连接fail')
-    }
- 
-    
-    testDB.collection('todos').add({
+    col.add({
       // data 字段表示需新增的 JSON 数据
       data: {
         description: "learn cloud database",
@@ -97,7 +95,59 @@ Page({
         console.log(res)
       }
     })
+  },
 
+  wxapp_Remove: function(){
+    console.log('小程序端_删除数据')
+    col.doc('W6xD_tdfTEkKDbvK').remove({
+      success: function (res) {
+        console.log('删除成功')
+        console.log(res)
+        console.log
+      },
+      fail: function(res) {
+        console.log('删除失败')
+        console.log(res)
+        console.err
+      },
+    })
+  },
+
+  wxapp_Get: function(){
+    console.log('小程序端_查询数据')
+    col.where({
+      _id:'W6xD_tdfTEkKDbvK',
+    }).get({
+        success: function (res) {
+          console.log('查询成功')
+          console.log(res)
+          console.log
+        },
+        fail: function (res) {
+          console.log('查询失败')
+          console.log(res)
+          console.err
+        },
+    })
+  },
+
+  wxapp_Update: function(){
+    console.log('小程序端_修改数据')
+    col.doc('W6xD_tdfTEkKDbvK').update({
+      data:{
+        description: 'test1',
+      },
+      success: function (res) {
+        console.log('修改成功')
+        console.log(res)
+        console.log
+      },
+      fail: function (res) {
+        console.log('修改失败')
+        console.log(res)
+        console.err
+      },
+    })
   },
 
   cloudFn_Add: function(e){
@@ -118,6 +168,63 @@ Page({
         console.log('call fail')
         console.log(err)
       }
+    })
+  },
+
+  cloudFn_Remove: function(e){
+    console.log(e)
+    wx.cloud.callFunction({
+      name: 'cloudFn_Remove',
+      data: {
+        x:'W6xEkddfTEkKDbv_'
+      },
+      success: res => {
+        console.log('call success')
+        console.log(res)
+      },
+      fail: err => {
+        console.log('call fail')
+        console.log(err)
+      }
+    })
+  },
+
+  cloudFn_Get:function(e){
+    console.log(e)
+    wx.cloud.callFunction({
+      name:'cloudFn_Get',
+      data:{
+        _openid: 'o52Tl5SPVrcXw9QIYufUePYVoawM',
+      },
+      success: res => {
+        console.log('call success')
+        console.log(res)
+      },
+      fail: err => {
+        console.log('call fail')
+        console.log(err)
+      }
+    })
+  },
+
+  cloudFn_Update:function(e){
+    console.log(e)
+    wx.cloud.callFunction({
+      name:'cloudFn_Update',
+      data:{
+        id: 'W6xEkddfTEkKDbv_',
+        desc:'new test'
+      },
+      success: function (res) {
+        console.log('修改成功')
+        console.log(res)
+        console.log
+      },
+      fail: function (res) {
+        console.log('修改失败')
+        console.log(res)
+        console.err
+      },
     })
   }
 })

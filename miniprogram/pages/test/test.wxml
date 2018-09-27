@@ -7,15 +7,15 @@
 <text>-----</text>
 
 <button bindtap='wxapp_Add'>小程序端-增</button>
-<button>小程序端-删</button>
-<button>小程序端-查</button>
-<button>小程序端-改</button>
+<button bindtap='wxapp_Remove'>小程序端-删</button>
+<button bindtap='wxapp_Get'>小程序端-查</button>
+<button bindtap='wxapp_Update'>小程序端-改</button>
 
 <text>-----</text>
 
 <button bindtap='cloudFn_Add'>云函数端-增</button>
-<button>云函数端-删</button>
-<button>云函数端-查</button>
-<button>云函数端-改</button>
+<button bindtap='cloudFn_Remove'>云函数端-删</button>
+<button bindtap='cloudFn_Get'>云函数端-查</button>
+<button bindtap='cloudFn_Update'>云函数端-改</button>
 
 <text>-----</text>
