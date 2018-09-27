@@ -1,11 +1,19 @@
 {
   "cloud": true,
   "pages": [
-    "pages/test/test",
     "pages/myindex/myindex",
     "pages/info/info",
+    "pages/test/test",
     "pages/map/map",
     "pages/me/me",
+
+    "pages/wallet/wallet",
+    "pages/charge/charge",
+    "pages/profile/profile",
+
+    "pages/moveshare/moveshare",
+    "pages/fixshare/fixshare",
+    
 
     "pages/index/index",
     "pages/userConsole/userConsole",
@@ -41,7 +49,7 @@
       },
       {
         "pagePath": "pages/map/map",
-        "text": "消息"
+        "text": "地图"
       },
       {
         "pagePath": "pages/me/me",

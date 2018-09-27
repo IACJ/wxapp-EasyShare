@@ -1,4 +1,4 @@
-// pages/myindex/myindex.js
+// pages/fixshare/fixshare.js
 Page({
 
   /**
@@ -62,32 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  btnScan: function(e) {
-    console.log(e)
-    wx.scanCode({
-      success: function(res) {
-        console.log('扫码success')
-        console.log(res)
-      },
-      fail: function(err) {
-        console.log('扫码fail')
-        console.log(err)
-      }
-    })
-  },
-
-  btnMoveShare: function(e) {
-    console.log(e)
-    wx.navigateTo({
-      url: '/pages/moveshare/moveshare',
-    })
-  },
-  btnFixShare: function(e) {
-    console.log(e)
-    wx.navigateTo({
-      url: '/pages/fixshare/fixshare',
-    })
   }
 })

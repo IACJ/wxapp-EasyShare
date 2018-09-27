@@ -1,0 +1,22 @@
+<!--pages/fixshare/fixshare.wxml-->
+<view class='page'>
+  <view class='title'> 固定物品共享 </view>
+
+  <view class='row'> 
+    <view class='item'> 共享浴室</view>
+    <view class='item'> 共享宾馆</view>
+    <view class='item'> 共享沙发</view>
+  </view>
+
+  <view class='row'> 
+    <view class='item'> 共享按摩椅</view>
+    <view class='item'> 共享KTV</view>
+    <view class='item'> 共享电影院</view>
+  </view>
+
+  <view class='row'> 
+    <view class='item'> 共享会议室</view>
+    <view class='item'> 共享茶水间</view>
+    <view class='item'> 共享阅读亭</view>
+  </view>
+</view>

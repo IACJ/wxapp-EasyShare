@@ -1,2 +1,17 @@
 <!--pages/info/info.wxml-->
-<text>pages/info/info.wxml</text>
+
+<!--轮播页面-->
+<view class='advertiseSwiper'>
+  <swiper class='banner' autoplay='true' interval='5000' duration='300'>
+    <block wx:for="{{sliderList}}" wx:key="key">
+      <swiper-item>
+        <image style='width:100%;height:100%;' src="{{item.imageSource}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view>待补充</view>
+</view>
+
+
+

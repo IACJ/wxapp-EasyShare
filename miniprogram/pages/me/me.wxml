@@ -1,2 +1,26 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+
+ 
+  <view  class="userinfo">
+    <block wx:if="{{userInfo.avatarUrl != ''}}">
+        <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar"></image>
+    </block>
+      <view class='nickname'>  <text>{{userInfo.nickName}}</text> </view>
+  </view> 
+   <view class="detail_body"> 
+   <block wx:if="{{userInfo.avatarUrl != ''}}"  >  
+     <view class='tiaomu'><navigator  url='../wallet/wallet'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>我的钱包 </navigator>  </view>
+    <view class='tiaomu'><navigator  url='../profile/profile?userinfo={{userInfo.nickName}}'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>修改资料 </navigator></view>
+    
+     <view class='tiaomu'><navigator  url='../somepage/test'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>我的订单</navigator></view>
+    
+     <view class='tiaomu'><navigator  url='../time/time'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>时长记录   </navigator>      </view>
+     
+     <view class='tiaomu'> <navigator  url='../somepage/fankui'> <image src='../../images/首页.png' style='width:20px;height:20px;'></image>我要反馈   </navigator>  </view>
+     <view class='tiaomu'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>
+     <text bindtap='actiondel'>  联系客服     </text> </view>   
+  </block></view>
+   
+  <button bindtap="bindAction" class="btn-login" hover-class="gray" type="{{bType}}" >{{actionText}}</button> 
+   
+ 
