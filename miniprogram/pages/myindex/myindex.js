@@ -64,6 +64,20 @@ Page({
 
   },
 
+  btnScan: function(e) {
+    console.log(e)
+    wx.scanCode({
+      success: function(res) {
+        console.log('扫码success')
+        console.log(res)
+      },
+      fail: function(err) {
+        console.log('扫码fail')
+        console.log(err)
+      }
+    })
+  },
+
   btnMoveShare: function(e) {
     console.log(e)
     wx.navigateTo({

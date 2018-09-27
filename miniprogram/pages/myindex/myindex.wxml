@@ -3,7 +3,7 @@
 <view class='page'>
   <view class='title'> 共享，让生活变得简单！ </view>
 
-  <view class='btnScan'> 扫码使用按钮</view>
+  <view class='btnScan' bindtap='btnScan'> 扫码使用按钮</view>
 
   <view class='chooseArea'> 
     <view class='btnBlock' bindtap='btnMoveShare'> 移动共享物品</view>
