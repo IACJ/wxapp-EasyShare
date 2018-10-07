@@ -1,0 +1,22 @@
+<!--miniprogram/pages/moveshare/bike/bike.wxml-->
+
+<view class='page'>
+  <view class='title'> 共享单车 </view>
+
+
+  <view class='row'> 
+    <view class='item'> 扫码选中</view>
+  </view>
+
+  <view class='row'> 
+    <view class='item'> 编号选中</view>
+    <input class='input' placeholder='________' type='number' maxlength='8'></input>
+  </view>
+
+  <view class='row'> 
+    <view class='item'> 产品说明</view>
+    <view class='item'> 使用说明</view>
+    <view class='item'> 计价说明</view>
+  </view>
+
+</view>

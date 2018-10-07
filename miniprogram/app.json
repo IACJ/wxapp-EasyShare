@@ -6,22 +6,12 @@
     "pages/test/test",
     "pages/map/map",
     "pages/me/me",
-
     "pages/wallet/wallet",
     "pages/charge/charge",
     "pages/profile/profile",
-
     "pages/moveshare/moveshare",
     "pages/fixshare/fixshare",
-    
-
-    "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib"
+    "pages/moveshare/bike/bike"
   ],
   "window": {
     "backgroundTextStyle": "dark",

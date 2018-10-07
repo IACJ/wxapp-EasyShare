@@ -5,7 +5,11 @@
 
   <view class='row'> 
     <view class='item'> 共享汽车</view>
-    <view class='item'> 共享单车</view>
+
+    <navigator url='./bike/bike'>
+      <view class='item'> 共享单车</view>
+    </navigator>
+
     <view class='item'> 共享三轮</view>
   </view>
 
