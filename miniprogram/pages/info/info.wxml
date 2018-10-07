@@ -1,17 +1,70 @@
-<!--pages/info/info.wxml-->
 
 <!--轮播页面-->
 <view class='advertiseSwiper'>
-  <swiper class='banner' autoplay='true' interval='5000' duration='300'>
+  <swiper class='banner' autoplay='true' interval='5000' duration='300' bindchange='switchTab'>
     <block wx:for="{{sliderList}}" wx:key="key">
       <swiper-item>
         <image style='width:100%;height:100%;' src="{{item.imageSource}}"></image>
       </swiper-item>
     </block>
   </swiper>
-
-  <view>待补充</view>
+  <view class="tab">
+    <block wx:for="{{sliderList}}" wx:key="key">
+      <view wx:if="{{item.selected}}" class='tab-item selected'>{{index+1}}</view>
+      <view wx:else class="tab-item">{{index+1}}</view>
+    </block>
+  </view>
 </view>
 
+
+<!--四大功能模块购画，阶梯课堂，公益之窗，联名-->
+<view class='functionModule'>
+  <view class="{{selectState[0]?'moduleSelected':''}}" bindtap='clickBuypaint'>
+    <image class="icon-image" src="../../images/icon/Buypaint.png"></image>
+    <view class='tabText'>购画Logo</view>
+  </view>
+  <view class="{{selectState[1]?'moduleSelected':''}}" bindtap='clickLadderclass'>
+    <image class="icon-image" src="../../images/icon/Ladderclass.png"></image>
+    <view class='tabText'>阶梯课堂</view>
+  </view>
+  <view class="{{selectState[2]?'moduleSelected':''}}" bindtap='clickPublicwindow'>
+    <image class="icon-image" src="../../images/icon/Publicwindow.png"></image>
+    <view class="tabText">公益之窗</view>
+  </view>
+  <view class="{{selectState[3]?'moduleSelected':''}}" bindtap='clickJointly'>
+    <image class="icon-image" src="../../images/icon/Jointly.png"/>
+    <view class="tabText">联名X-1</view>
+  </view>
+</view>
+
+<!--第二层功能单选模块关注，推荐，热度-->
+<radio-group class="radio-group" bindchange="radioChange">
+  <label class="radio" wx:for="{{items}}" wx:key="key">
+    <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+  </label>
+</radio-group>
+
+
+<!--作品展览-->
+<view class="card" wx:for="{{paintingList}}" wx:key="id">
+  <view data-id="{{item.id}}" bindtap='onItemClick'>
+    <image class="image-work" mode="aspectFill" src="{{item.img_url}}"></image>
+   
+    <view class="title">{{item.title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{error === true}}" class='font'> 网络请求失败! </view>
+
+<button hidden="{{loadmorehidden}}" class="loadmore" size="default" loading="{{loading}}" plain="{{plain}}" bindtap="loadMore"> 
+  点击加载更多 
+</button>
+
+<!--上首页-->
+<!--
+<view class='toFrontpage'>
+  <image class="icon-image" src="../../images/icon/上首页.png"></image>
+</view>
+-->
 
 

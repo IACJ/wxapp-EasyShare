@@ -1,134 +1,99 @@
-/* pages/info/info.wxss */
 
-.news-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+.index{
+  min-height:100vh;
+  font-size: 24px;
+  color:white;
 }
+.banner{height:320px;background-color: #ddd;}
 
-.news-item {
-  display: flex;
-  flex-direction: row;
-  height:150rpx;
-  /*width属性解决标题文字太短而导航缩略偏移*/
-  width:100%;
-  border-bottom:1px solid #2a579a;
+.advertiseSwiper{
+  height:320rpx;
+  position:relative;
 }
-
-.news-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.news-stamp {
-    font-size: 25rpx;
-    color:darkgray;
-    padding: 0 20rpx;
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-}
-
-.news-title {
-  margin: 10rpx;
-  font-size: 30rpx;
-}
-
-
-.container {
-  /* height: 5000rpx; */
-  display: flex;
-  flex-direction: column;
+.advertiseSwiper swiper{height:100%;}
+.tab{
+  height:70rpx;position:absolute;bottom: 0;display: flex;
+  width:100%;text-align: center;justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  /*padding: 200rpx 0;*/
-  box-sizing: border-box;
-} 
+}
+.tab .tab-item{background-color: #ccc;height:50rpx;width:50rpx;
+line-height:50rpx;font-size: 12rpx;color:#fff;border-radius: 4px;
+margin-right:10px;}
+.tab .tab-item.selected{background-color: #2a579a;}
 
-.list-image {
-  width:150rpx;
-  height:100rpx;
-}
-
-.swiper-image {
-	width: 100%;
-}
-.icon-image{
-  width:100rpx;
-  height:100rpx;
-  margin: 20rpx 20rpx 0;
-}
-.imagetext{
-  margin: 0 0 10rpx 10rpx;
-  color:  #666;
-  font-size:15px;
-  display: flex;
+/*四大功能模块相关*/
+.functionModule{
+  /*设置模块外观*/
+  margin:0 0 10rpx 10rpx;
+  color:#666;
+  font-size: 10px;
+  display:flex;
   flex-direction: row;
   justify-content:space-around;
 }
-.messageSelected{
+.icon-image{
+  /*设置图标样式*/
+  width:100rpx;
+  height:100rpx;
+  margin:20rpx 40rpx 0;
+}
+
+.tabText{
+  /*设置文字样式*/
+  margin:0 0 0 50rpx;
+}
+.moduleSelected{
+  /*设置模块选中样式*/
   border: 1px #2a579a solid;
   border-radius: 20%;
 }
-.tabText{
-  margin:0 0 0 40rpx;
+
+/*单选框*/
+.radio-group{
+  position: absolute;
+  left:100px;
+  font-size: 10px;
 }
 
 
-/*评论详情的属性*/
-.sub-title{
-  color: #76787e;
-  height: 36px;
-  line-height: 36px;
-  padding: 0 16px;
-  width: 100%;
+/*上首页*/
+.toFrontpage{
+  position:absolute;
+  left:10rpx;
+  bottom: 100rpx;
+}
+
+/*图片的外框架*/
+.card {
+    border: 2px solid #666;
+    border-radius: 5px;
+    /* background-color: #666;  */
+    box-shadow: 0px 5px 1px #cccccc;
+    margin: 30px 10px 0px 10px;
+    position: relative;
+}
+
+.loadmore {
+    border: 0px solid #666;
+    border-radius: 5px;
+    background-color: #58a4ef;
+    /* box-shadow: 0px 5px 1px #cccccc; */
+    margin: 8px;
+    margin-top: 30px;
+}
+
+.image-work{
+  width:100%;
+  height:240px; 
+}
+
+.title {
+    padding: 14px;
+    font-size: 14px;
+}
+.font {
+  padding-top: 2rem;
+  text-align: center;
   font-size: 14px;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.comment-item-container {
-  background-color: #f2f2f2;
-  width: 100%;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.comment-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-left: 8px;
-  padding-top: 8px;
-  padding-right: 8px;
-  padding-bottom: 8px;
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-top: 8px;
-  background-color: #fff;
-  border: 1px solid #eaeaea;
-  border-bottom: 1px solid #d0d0d0;
-  border-radius: 5px;
-}
-
-.comment-item-right{
-  width: 80px;
-  height: 80px;
-}
-
-.comment-image{
-  width: 80px;
-  height: 80px;
-}
-
-.comment-item-title{
-  font-size: 16px;
-}
-
-.load-btn{
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  background-color:  #58a4ef;
+  color: red;
 }
