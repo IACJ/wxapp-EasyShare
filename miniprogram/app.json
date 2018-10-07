@@ -37,23 +37,33 @@
     "list": [
       {
         "pagePath": "pages/myindex/myindex",
-        "text": "主页"
+        "text": "主页",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/homeL.png"
       },
       {
         "pagePath": "pages/info/info",
-        "text": "资讯"
+        "text": "资讯",
+        "iconPath": "images/icon/message.png",
+        "selectedIconPath": "images/icon/messageL.png"
       },
       {
         "pagePath": "pages/test/test",
-        "text": "测试"
+        "text": "测试",
+        "iconPath": "images/icon/publish.png",
+        "selectedIconPath": "images/icon/publish.png"
       },
       {
         "pagePath": "pages/map/map",
-        "text": "地图"
+        "text": "地图",
+        "iconPath": "images/icon/find.png",
+        "selectedIconPath": "images/icon/findL.png"
       },
       {
         "pagePath": "pages/me/me",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "images/icon/mine.png",
+        "selectedIconPath": "images/icon/mineL.png"
       }
     ]
   }

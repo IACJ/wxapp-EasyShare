@@ -1,26 +1,56 @@
 <!--pages/me/me.wxml-->
-
- 
-  <view  class="userinfo">
-    <block wx:if="{{userInfo.avatarUrl != ''}}">
-        <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar"></image>
-    </block>
-      <view class='nickname'>  <text>{{userInfo.nickName}}</text> </view>
+<view class="me__">
+  <view  class="me__userinfo">
+   
+      <image src="{{userInfo ? userInfo.avatarUrl : '/images/icon/mine.png'}}" class="me__avatar"></image>
+      <view class='me__nickname'> {{userInfo?userInfo.nickName:'未登录'}} </view>
   </view> 
-   <view class="detail_body"> 
-   <block wx:if="{{userInfo.avatarUrl != ''}}"  >  
-     <view class='tiaomu'><navigator  url='../wallet/wallet'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>我的钱包 </navigator>  </view>
-    <view class='tiaomu'><navigator  url='../profile/profile?userinfo={{userInfo.nickName}}'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>修改资料 </navigator></view>
+
+  <view wx:if="{{userInfo}}" class="me__detail"> 
+      
+    <navigator url='../wallet/wallet'>
+      <view class='me__item'>
+        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
+        <text> 我的钱包 </text> 
+      </view>
+    </navigator>  
+
+    <navigator url='../profile/profile?userinfo={{userInfo.nickName}}'>
+      <view class='me__item'>
+        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
+        <text> 修改资料 </text> 
+      </view>
+    </navigator>
     
-     <view class='tiaomu'><navigator  url='../somepage/test'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>我的订单</navigator></view>
+    <navigator  url='../somepage/test'>
+      <view class='me__item'>
+        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
+        <text> 我的订单 </text>
+      </view>
+    </navigator>
     
-     <view class='tiaomu'><navigator  url='../time/time'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>时长记录   </navigator>      </view>
+    <navigator  url='../time/time'>
+      <view class='me__item'> 
+        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
+        <text> 时长记录 </text>         
+      </view>
+    </navigator>  
      
-     <view class='tiaomu'> <navigator  url='../somepage/fankui'> <image src='../../images/首页.png' style='width:20px;height:20px;'></image>我要反馈   </navigator>  </view>
-     <view class='tiaomu'><image src='../../images/首页.png' style='width:20px;height:20px;'></image>
-     <text bindtap='actiondel'>  联系客服     </text> </view>   
-  </block></view>
+    <navigator url='../somepage/fankui'> 
+      <view class='me__item'> 
+        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
+        <text> 我要反馈 </text>  
+      </view>
+    </navigator>  
+
+    <view class='me__item' bindtap='actiondel'>
+      <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
+      <text> 联系客服 </text> 
+    </view>   
+  </view>
    
-  <button bindtap="bindAction" class="btn-login" hover-class="gray" type="{{bType}}" >{{actionText}}</button> 
-   
- 
+
+
+  <button wx:if='{{!userInfo}}'class="me__btn" open-type='getUserInfo' bindgetuserinfo='getuserinfo' type="primary">登录</button> 
+  <button wx:else type='warn' class="me__btn" bindtap="btnLogout">退出登录</button>
+</view>
