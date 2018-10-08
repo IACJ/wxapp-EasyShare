@@ -70,10 +70,37 @@ Page({
       success: function(res) {
         console.log('扫码success')
         console.log(res)
+        function domainURI(str) {
+          var durl = /https?:\/\/([^\/]+)\//i;
+          domain = str.match(durl);
+          return domain[1];
+        }
+
+        var domain = domainURI(res.result)
+        let bizName = domain
+
+        if (bizName === 'ofo.so'){
+          bizName = 'ofo单车'
+        } else if (bizName === 'www.mobike.com'){
+          bizName = '摩拜单车'
+        }
+
+        wx.showModal({
+          title: "未合作的商家",
+          content:'该物品属于“'+bizName+'”,此商家尚未和我们合作。',
+          success: (res) => {
+            console.log(res)
+          }
+        })
+ 
       },
       fail: function(err) {
         console.log('扫码fail')
         console.log(err)
+        wx.showToast({
+          title: '未能识别二维码',
+          icon: 'none'
+        })
       }
     })
   },
