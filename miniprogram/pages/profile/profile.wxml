@@ -13,7 +13,7 @@
         <view class="section section_gap">  
             <view class="section__title">年龄:</view>  
             <view class='form-group'>  
-                <slider name="age" show-value ></slider>  
+                <slider binchange="bindAgeChange" value="{{age}}" name="age" show-value ></slider>  
             </view>      
         </view> 
 
@@ -21,7 +21,7 @@
         <view class="section section_gap">  
             <view class="section__title">性别:</view>  
             <view class='form-group'>  
-                <radio-group name="gender">  
+                <radio-group bindchange="bindSexChange" name="gender">  
                   <label><radio value="1"/>男</label>  
                   <label><radio value="0"/>女</label>  
                 </radio-group>  
@@ -32,9 +32,9 @@
         <view class="section">  
             <view class="section__title">地区:</view>  
             <view class='form-group'>  
-                <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">  
+                <picker bindchange="bindPickerChange" value="{{place}}" range="{{array}}">  
                     <view class="picker">  
-                        <input type="hidden" disabled="true" name="addr" value="{{array[index]}}"/>  
+                        <input type="hidden" disabled="true" name="addr" value="{{array[place]}}"/>  
                     </view>  
                 </picker>  
             </view>  
@@ -45,7 +45,7 @@
         <view class="section section_gap">  
             <view class="section__title">是否显示:</view>  
             <view class='form-group'>  
-                 <switch name="isshow"/>  
+                 <switch bindchange="bindShowChange" value="{{show}}" name="isshow"/>  
             </view>  
         </view>  
 

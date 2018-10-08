@@ -1,13 +1,66 @@
 // pages/wallet/wallet.js
+const testDB = wx.cloud.database({
+  env: 'test-share-92a8ff'
+})
+const col = testDB.collection('user_money')
 Page({
   data: {
     overage: 0,
-    ticket: 0
+    ticket: 0,
+    walletid:0
   },
   // 页面加载
   onLoad: function (options) {
+    var that=this
     wx.setNavigationBarTitle({
       title: '我的钱包'
+    })
+    col.where({
+
+    }).get({
+      success: function(res){
+        if(res.data.length===0){
+          console.log('没有数据')
+          col.add({
+            // data 字段表示需新增的 JSON 数据
+            data: {
+              money: 0,
+            },
+            success: function (res) {
+              console.log('Load插入成功')
+            },
+            fail: function (res) {
+              console.log('Load插入失败')
+            }
+          })
+          col.where({
+          }).get({
+            success: function(res){
+              wx.setStorage({
+                key: 'walletid',
+                data: {
+                  id: res.data[0]._id
+                }
+              })
+              that.setData({
+                walletid: res.data[0]._id,
+              })
+            },
+          })
+        }
+        else{
+          var r=res
+          wx.setStorage({
+            key: 'walletid',
+            data: {
+              id: r.data[0]._id
+            }
+          })
+          that.setData({
+            walletid: r.data[0]._id,
+          })
+        }
+      }
     })
   },
   // 页面加载完成，更新本地存储的overage

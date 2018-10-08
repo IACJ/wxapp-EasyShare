@@ -28,12 +28,25 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
+					"name": "profile",
+					"pathName": "pages/profile/profile",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "info",
+					"pathName": "pages/info/info",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "info",
+					"pathName": "pages/wallet/wallet",
+					"query": ""
 				}
 			]
 		}

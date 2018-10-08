@@ -116,12 +116,12 @@ Page({
   wxapp_Get: function(){
     console.log('小程序端_查询数据')
     col.where({
-      _id:'W6xD_tdfTEkKDbvK',
+      
     }).get({
         success: function (res) {
           console.log('查询成功')
           console.log(res)
-          console.log
+          console.log(res.data[0]._id)
         },
         fail: function (res) {
           console.log('查询失败')
