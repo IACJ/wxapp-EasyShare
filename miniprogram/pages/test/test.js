@@ -226,5 +226,38 @@ Page({
         console.err
       },
     })
+  },
+
+  resetBike: function (e) {
+    let that = this
+    this.setData({
+      busy:true
+    })
+    console.log(e)
+
+    wx.cloud.callFunction({
+      // 要调用的云函数名称
+      name: 'resetBike',
+      success: res => {
+        console.log('call success')
+        console.log(res)
+        wx.showToast({
+          title: '调用成功',
+        })
+      },
+      fail: err => {
+        console.log('call fail')
+        console.log(err)
+        wx.showToast({
+          title: '调用失败',
+          icon: 'none'
+        })
+      },
+      complete: e=> {
+        that.setData({
+          busy: false
+        })
+      }
+    })
   }
 })
