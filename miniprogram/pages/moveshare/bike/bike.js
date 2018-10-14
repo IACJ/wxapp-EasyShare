@@ -57,10 +57,64 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  chooseId: function(e) {
+    let that = this
+    let inputId = this.data.inputId
+    console.log(inputId)
+    if (!inputId) {
+      return
+    }
 
+    //to do : check inputId
+
+ 
+    wx.showModal({
+      title: '确认使用？',
+      content: '确认使用' + inputId +'？',
+      success: function(e) {
+        console.log(e);
+        if (e.confirm) {
+          that.setData({
+            'id': inputId
+          })
+        }
+      }
+    })
+  },
+  bindinput:function(e) {
+    this.setData({
+      'inputId' : e.detail.value
+    })
+  },
+  btnStopUse:function(e) {
+    let that = this
+    wx.showModal({
+      title: '结束使用？',
+      content: '结束使用' + this.data.id + '？',
+      success: function (e) {
+        console.log(e);
+        if (e.confirm) {
+          that.setData({
+            'id': null
+          })
+        }
+      }
+    })
+  },
+  scanToChoose:function(e) {
+    wx.scanCode({
+      success: function (res) {
+        console.log('扫码success')
+        console.log(res)
+      },
+      fail: function (err) {
+        console.log('扫码fail')
+        console.log(err)
+        wx.showToast({
+          title: '未能识别二维码',
+          icon: 'none'
+        })
+      }
+    })
   }
 })

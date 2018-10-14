@@ -32,4 +32,12 @@
 .input{
   width: 300rpx;
   font-size: 20pt;
+  border-bottom: #AAA;
+}
+
+.chooseIdArea{
+  width: 100%;
+}
+.controlArea{
+  width: 100%;
 }

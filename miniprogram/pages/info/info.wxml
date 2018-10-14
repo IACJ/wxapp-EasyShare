@@ -21,7 +21,7 @@
 <view class='functionModule'>
   <view class="{{selectState[0]?'moduleSelected':''}}" bindtap='clickBuypaint'>
     <image class="icon-image" src="../../images/icon/Buypaint.png"></image>
-    <view class='tabText'>购画Logo</view>
+    <view class='tabText'>充值好礼</view>
   </view>
   <view class="{{selectState[1]?'moduleSelected':''}}" bindtap='clickLadderclass'>
     <image class="icon-image" src="../../images/icon/Ladderclass.png"></image>
@@ -29,11 +29,11 @@
   </view>
   <view class="{{selectState[2]?'moduleSelected':''}}" bindtap='clickPublicwindow'>
     <image class="icon-image" src="../../images/icon/Publicwindow.png"></image>
-    <view class="tabText">公益之窗</view>
+    <view class="tabText">开眼世界</view>
   </view>
   <view class="{{selectState[3]?'moduleSelected':''}}" bindtap='clickJointly'>
     <image class="icon-image" src="../../images/icon/Jointly.png"/>
-    <view class="tabText">联名X-1</view>
+    <view class="tabText">呼朋唤友</view>
   </view>
 </view>
 
