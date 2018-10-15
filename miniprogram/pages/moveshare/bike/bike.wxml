@@ -4,13 +4,30 @@
   <view class='title'> 共享单车 </view>
 
 
-  <view class='row'> 
-    <view class='item'> 扫码选中</view>
-  </view>
+  <view class='chooseIdArea'wx:if='{{!id}}' >
+    <view class='row'> 
+      <view class='item' bindtap='scanToChoose'> 扫码选中</view>
+    </view>
 
-  <view class='row'> 
-    <view class='item'> 编号选中</view>
-    <input class='input' placeholder='________' type='number' maxlength='8'></input>
+    <view class='row'> 
+      <view class='item' bindtap='chooseId'> 编号选中</view>
+      <input class='input' 
+        placeholder='________' 
+        type='number' 
+        maxlength='8'
+        value='{{inputId}}'
+        bindinput='bindinput'></input>
+    </view>
+  </view>
+  <view class='controlArea' wx:else>
+    <view class='row'> 
+      <view class='item'>开锁</view>
+      <view class='item'>关锁</view>
+    </view>
+    <view class='row'> 
+      <view class='item'>反馈故障</view>
+      <view class='item' bindtap='btnStopUse'>结束使用</view>
+    </view>
   </view>
 
   <view class='row'> 

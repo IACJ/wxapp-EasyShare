@@ -1,1 +1,8 @@
 /* pages/test/test.wxss */
+
+.test__page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
