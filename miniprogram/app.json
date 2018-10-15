@@ -11,7 +11,8 @@
     "pages/profile/profile",
     "pages/moveshare/moveshare",
     "pages/fixshare/fixshare",
-    "pages/moveshare/bike/bike"
+    "pages/moveshare/bike/bike",
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "dark",

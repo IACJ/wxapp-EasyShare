@@ -1,0 +1,26 @@
+/* miniprogram/pages/feedback/feedback.wxss */
+page{
+  background-color: #f3f7f3;
+  display: flex;
+  flex-direction: column;
+}
+ .title{
+  margin : 5px;
+
+ }
+.input-box{
+  position: relative;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 60rpx 0;
+  border-radius: 10rpx;
+}
+.btn-commit{
+  width: 90%;
+  height: 40px;
+  background-color: #d8f440;
+  margin-top:20px;
+}
+.input-text{  
+    border: 1px solid #fff;  
+}   

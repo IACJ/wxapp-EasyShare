@@ -5,7 +5,7 @@
          <view class="section">  
             <view class="section__title">昵称:</view>  
             <view class='form-group'>  
-                <input type="text" class="input-text" name="username" placeholder="{{userinfo}}" />  
+                <input type="text" class="input-text" name="username" value="{{userinfo}}" disabled/>  
             </view>      
         </view>  
 
@@ -13,7 +13,7 @@
         <view class="section section_gap">  
             <view class="section__title">年龄:</view>  
             <view class='form-group'>  
-                <slider binchange="bindAgeChange" value="{{age}}" name="age" show-value ></slider>  
+                <slider bindchange="bindAgeChange" value="{{age}}" name="age" show-value ></slider>  
             </view>      
         </view> 
 
@@ -22,8 +22,10 @@
             <view class="section__title">性别:</view>  
             <view class='form-group'>  
                 <radio-group bindchange="bindSexChange" name="gender">  
-                  <label><radio value="1"/>男</label>  
-                  <label><radio value="0"/>女</label>  
+                  <label wx:for='{{items}}'>
+                  <radio value='{{item.name}}' checked='{{item.checked}}'/>{{item.value}}
+                  </label>  
+                  
                 </radio-group>  
             </view>      
         </view>  
@@ -39,13 +41,27 @@
                 </picker>  
             </view>  
         </view>  
-
-         
+        <!-- 手机号 -->
+         <view class="section ">  
+            <view class="section__title">手机号:</view>  
+            <view class='form-group'>  
+                <input type="number" class="input-text" name="phonenumber" value="{{phone}}"  placeholder="可选" bindblur="bindPhone" maxlength='11'/>  
+            </view>      
+        </view> 
+        <!-- 邮箱 -->
+        <view class="section ">  
+            <view class="section__title">邮箱:</view>  
+            <view class='form-group'>  
+                <input type="text" class="input-text" name="email" value="{{email}}"  placeholder="可选" 
+                bindblur="bindEmail"/>  
+            </view>      
+        </view>
           <!--是否显示-->
         <view class="section section_gap">  
             <view class="section__title">是否显示:</view>  
             <view class='form-group'>  
-                 <switch bindchange="bindShowChange" value="{{show}}" name="isshow"/>  
+              
+              <switch bindchange="bindShowChange" checked="{{show}}" name="isshow"/>  
             </view>  
         </view>  
 

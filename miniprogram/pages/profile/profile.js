@@ -13,11 +13,17 @@ Page({
     modalHidden2: true,
     notice_str: '',
     userinfo: {},
-    place: 'China',
+    place: 0,
     sex:1,
-    age:18,
+    age:0,
     show:false,
-    profileid:0
+    profileid:0,
+    items: [
+      {name:0, value: '男', checked: 'false' },
+      {name:1, value: '女', checked: 'false' },
+    ],
+    phone:null,
+    email:null
   },
   toast1Change: function (e) {
     this.setData({ toast1Hidden: true });
@@ -30,29 +36,54 @@ Page({
   },
   confirm_one: function (e) {
     var that=this
-    col.doc(that.data.profileid).update({
-      data:{
-        age:that.data.age,
-        sex:that.data.sex,
-        place:that.data.place,
-        show:that.data.show,
-      },
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          modalHidden:true,
-          toast1Hidden:false,
-          notice_str:'提交成功'
+    console.log(e)
+    console.log(that.data.profileid)
+    if (this.data.email === null || /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.data.email)){
+      if (this.data.phone === null || /^(?:13\d|15\d|18\d|17\d)\d{5}(\d{3}|\*{3})$/.test(this.data.phone)){
+        col.doc(that.data.profileid).update({
+          data:{
+            age:that.data.age,
+            sex:that.data.sex,
+            place:that.data.place,
+            phone:that.data.phone,
+            email:that.data.email,
+            show: that.data.show,
+          },
+          success: function (res) {
+            console.log(res)
+            that.setData({
+              modalHidden:true,
+              toast1Hidden:false,
+              notice_str:'提交成功'
+            })
+          },
+          fail:function(res){
+            console.log(res)
+            that.setData({
+              modalHidden: true,
+              toast1Hidden: false,
+              notice_str: '提交失败'
+            })
+          }
         })
-      },
-      fail:function(res){
+      }
+      else{
+        console.log("html手机号错误")
         that.setData({
           modalHidden: true,
           toast1Hidden: false,
-          notice_str: '提交失败'
+          notice_str: '手机号错误'
         })
       }
-    })
+    }
+    else{
+      console.log("html弹框邮箱错误")
+      that.setData({
+        modalHidden: true,
+        toast1Hidden: false,
+        notice_str: '邮箱错误'
+      })
+    }
     // this.setData({
     //   modalHidden: true,
     //   toast1Hidden: false,
@@ -86,6 +117,7 @@ Page({
     console.log(this.data.place)
   },
   bindAgeChange:function(e){
+    console.log(e)
     this.setData({
       age:e.detail.value
     })
@@ -103,6 +135,16 @@ Page({
     })
     console.log(this.data.show)
   },
+  bindPhone:function(e){
+    this.setData({
+      phone:e.detail.value
+      })
+  },
+  bindEmail:function(e){
+    this.setData({
+      email:e.detail.value
+    })
+  },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数  
     console.log('onLoad')
@@ -110,10 +152,12 @@ Page({
     this.setData({
       userinfo: options.userinfo
     })
+    var r
     col.where({
 
     }).get({
       success: function (res) {
+        r=res
         if (res.data.length === 0) {
           console.log('没有数据')
           // wx.getStorage({
@@ -127,11 +171,13 @@ Page({
           col.add({
             // data 字段表示需新增的 JSON 数据
             data: {
-              // name:that.data.userinfo.Nickname,
+              name:that.data.userinfo,
               age: that.data.age,
               sex: that.data.sex,
               place: that.data.place,
-              show: that.data.show
+              show: that.data.show,
+              phone:that.data.phone,
+              email:that.data.email,
             },
             success: function (res) {
               console.log('Load插入成功')
@@ -143,36 +189,32 @@ Page({
           col.where({
           }).get({
             success: function (res) {
-              wx.setStorage({
-                key: 'profileid',
-                data: {
-                  profileid: res.data[0]._id
-                }
-              })
               that.setData({
-                profileid: res.data[0]._id,
+                profileid:res.data[0]._id
               })
-              console.log(that.data.profileid)
+              console.log("successed"+that.data.profileid)
             },
           })
         }
-        else {
-          var r = res
-          wx.setStorage({
-            key: 'id',
-            data: {
-              profileid: r.data[0]._id
-            }
-          })
-          that.setData({
-            profileid: r.data[0]._id,
-            age:r.data[0].age,
-            sex:r.data[0].sex,
-            place:r.data[0].place,
-            show:r.data[0].show
-          })
-          console.log(that.data.profileid)
-        }
+      },
+      complete:function(){
+        console.log("complete"+r)
+        that.setData({
+          profileid: r.data[0]._id,
+          age:r.data[0].age,
+          sex:r.data[0].sex,
+          place:r.data[0].place,
+          phone:r.data[0].phone,
+          email:r.data[0].email,
+          show:r.data[0].show,
+        })
+        var i=parseInt(that.data.sex)
+        var c="items["+i+"].checked"
+        console.log("i"+i+"    "+c)
+        that.setData({
+          [c]:true
+        }) 
+        console.log("complete"+that.data.profileid)
       }
     })
   },
@@ -192,20 +234,7 @@ Page({
     var that = this;
     console.log(e)
     var formData = e.detail.value;
-    wx.request({
-      url: 'http://www.xazyjj.com/client/',
-      data: formData,
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res.data)
-        that.modalTap();
-      },
-      fail: function (res) {
-        that.modalTap();
-      }
-    })
+    that.modalTap();
   },
   formReset: function () {
     console.log('form发生了reset事件');

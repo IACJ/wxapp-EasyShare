@@ -1,0 +1,12 @@
+<!--miniprogram/pages/feedback/feedback.wxml-->
+<view class='page'>
+  <view class="title">问题与意见</view>
+    <view class="input-box">
+        <input type="text" class="input-text" placeholder="请输入遇到的问题和建议"/>
+    </view>
+    <view class="title">联系电话</view>
+    <view class='input-box'>
+        <input type="number" class="input-text" name="phonenumber"  placeholder="选填，便于我们与您联系" />
+    </view>
+  <button bindtap="commit" class="btn-commit">意见反馈</button>
+</view>

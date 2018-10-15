@@ -36,7 +36,7 @@
       </view>
     </navigator>  
      
-    <navigator url='../somepage/fankui'> 
+    <navigator url='../feedback/feedback'> 
       <view class='me__item'> 
         <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
         <text> 我要反馈 </text>  

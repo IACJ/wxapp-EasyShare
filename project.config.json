@@ -10,7 +10,7 @@
 	},
 	"appid": "wx8b1b9a92c5b0f369",
 	"projectname": "wxapp-EasyShare",
-	"libVersion": "2.2.5",
+	"libVersion": "2.3.0",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -28,24 +28,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
-					"name": "profile",
-					"pathName": "pages/profile/profile",
-					"query": ""
-				},
-				{
-					"id": 1,
-					"name": "info",
-					"pathName": "pages/info/info",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "info",
-					"pathName": "pages/wallet/wallet",
+					"id": 0,
+					"name": "意见反馈",
+					"pathName": "pages/feedback/feedback",
 					"query": ""
 				}
 			]
