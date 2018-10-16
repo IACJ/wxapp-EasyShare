@@ -2,11 +2,7 @@
 const testDB = wx.cloud.database({
   env: 'test-share-92a8ff'
 })
-if (testDB) {
-  console.log('连接ok')
-} else {
-  console.log('连接fail')
-}
+
 const col=testDB.collection('todos')
 Page({
 

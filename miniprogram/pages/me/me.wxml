@@ -15,7 +15,7 @@
       </view>
     </navigator>  
 
-    <navigator url='../profile/profile?userinfo={{userInfo.nickName}}'>
+    <navigator url='../profile/profile?nickName={{userInfo.nickName}}'>
       <view class='me__item'>
         <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
         <text> 修改资料 </text> 
