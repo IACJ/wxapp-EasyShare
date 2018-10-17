@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    num:0,
+    phonenum:0
   },
 
   /**
@@ -62,5 +63,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  opinionnum:function(e){
+    this.setData({
+      num: e.detail.cursor
+    })
+  },
+  phonenum:function(e){
+    this.setData({
+      phonenum: e.detail.cursor
+    })
   }
 })
