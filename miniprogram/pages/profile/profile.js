@@ -1,112 +1,33 @@
 // pages/profile/profile.js
 var app = getApp();
-const testDB = wx.cloud.database({
+const db = wx.cloud.database({
   env: 'test-share-92a8ff'
 })
-const col = testDB.collection('user_profile')
+const col = db.collection('user_profile')
 Page({
   data: {
-    // text:"这是一个页面"  
-    array: ["广东", "上海", "深圳", "北京"],
-    toast1Hidden: true,
-    modalHidden: true,
-    modalHidden2: true,
-    notice_str: '',
-    userinfo: {},
-    place: 0,
-    sex:1,
-    age:0,
-    show:false,
-    profileid:0,
-    items: [
-      {name:0, value: '男', checked: 'false' },
-      {name:1, value: '女', checked: 'false' },
-    ],
-    phone:null,
-    email:null
+    pageHeight:0,
+    genderList: ['男', '女', '未知'],
+
+    nickName: '',
+    age: 0,
+    sex: '男',
+    place: ['', '', ''],
+    show: false,
+    phone: '',
+    email: '',
   },
-  toast1Change: function (e) {
-    this.setData({ toast1Hidden: true });
-  },
-  //弹出确认框  
-  modalTap: function (e) {
-    this.setData({
-      modalHidden: false
-    })
-  },
-  confirm_one: function (e) {
-    var that=this
+
+  bindAgeChange:function(e){
     console.log(e)
-    console.log(that.data.profileid)
-    if (this.data.email === null || /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.data.email)){
-      if (this.data.phone === null || /^(?:13\d|15\d|18\d|17\d)\d{5}(\d{3}|\*{3})$/.test(this.data.phone)){
-        col.doc(that.data.profileid).update({
-          data:{
-            age:that.data.age,
-            sex:that.data.sex,
-            place:that.data.place,
-            phone:that.data.phone,
-            email:that.data.email,
-            show: that.data.show,
-          },
-          success: function (res) {
-            console.log(res)
-            that.setData({
-              modalHidden:true,
-              toast1Hidden:false,
-              notice_str:'提交成功'
-            })
-          },
-          fail:function(res){
-            console.log(res)
-            that.setData({
-              modalHidden: true,
-              toast1Hidden: false,
-              notice_str: '提交失败'
-            })
-          }
-        })
-      }
-      else{
-        console.log("html手机号错误")
-        that.setData({
-          modalHidden: true,
-          toast1Hidden: false,
-          notice_str: '手机号错误'
-        })
-      }
-    }
-    else{
-      console.log("html弹框邮箱错误")
-      that.setData({
-        modalHidden: true,
-        toast1Hidden: false,
-        notice_str: '邮箱错误'
-      })
-    }
-    // this.setData({
-    //   modalHidden: true,
-    //   toast1Hidden: false,
-    //   notice_str: '提交成功'
-    // });
-  },
-  cancel_one: function (e) {
-    console.log(e);
     this.setData({
-      modalHidden: true,
-      toast1Hidden: false,
-      notice_str: '取消成功'
-    });
-  },
-  //弹出提示框  
-  modalTap2: function (e) {
-    this.setData({
-      modalHidden2: false
+      age:e.detail.value
     })
   },
-  modalChange2: function (e) {
+  bindSexChange:function(e){
+    console.log(e)
     this.setData({
-      modalHidden2: true
+      sex:e.detail.value
     })
   },
   bindPickerChange: function (e) {
@@ -116,128 +37,163 @@ Page({
     })
     console.log(this.data.place)
   },
-  bindAgeChange:function(e){
+  bindPhone:function(e){
     console.log(e)
     this.setData({
-      age:e.detail.value
-    })
-    console.log(this.data.age)
-  },
-  bindSexChange:function(e){
-    this.setData({
-      sex:e.detail.value
-    })
-    console.log(this.data.sex)
-  },
-  bindShowChange:function(e){
-    this.setData({
-      show:e.detail.value
-    })
-    console.log(this.data.show)
-  },
-  bindPhone:function(e){
-    this.setData({
       phone:e.detail.value
-      })
+    })
   },
   bindEmail:function(e){
+    console.log(e)
     this.setData({
       email:e.detail.value
     })
   },
+  bindShowChange: function (e) {
+    console.log(e)
+    this.setData({
+      show: e.detail.value
+    })
+  },
+
   onLoad: function (options) {
-    // 页面初始化 options为页面跳转所带来的参数  
     console.log('onLoad')
     var that = this
+    let systemInfo = wx.getSystemInfoSync();
     this.setData({
-      userinfo: options.userinfo
+      'pageHeight': systemInfo.windowHeight
     })
-    var r
-    col.where({
+    this.setData({
+      nickName: options.nickName
+    })
 
-    }).get({
-      success: function (res) {
-        r=res
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+
+    col.where({}).get({
+      success: function (res) {  
+        console.log(res)
         if (res.data.length === 0) {
-          console.log('没有数据')
-          // wx.getStorage({
-          //   key: 'userinfo',
-          //   success: function(res) {
-          //     that.setData({
-          //       userinfo:res.data.userinfo
-          //     })
-          //   },
-          // })
+          console.log('用户资料初始化.')
           col.add({
-            // data 字段表示需新增的 JSON 数据
             data: {
-              name:that.data.userinfo,
-              age: that.data.age,
-              sex: that.data.sex,
-              place: that.data.place,
-              show: that.data.show,
-              phone:that.data.phone,
-              email:that.data.email,
+              nickName: that.data.nickName,
+              age: 0,
+              sex: '未知',
+              place: ['','',''],
+              show: false,
+              phone:'',
+              email:'',
             },
             success: function (res) {
-              console.log('Load插入成功')
+              console.log('[用户资料初始化]成功:' + JSON.stringify(res))
+              wx.hideLoading()
+              that.profileId = res._id;
             },
             fail: function (res) {
-              console.log('Load插入失败')
+              console.log('[用户资料初始化]失败:' + JSON.stringify(res))
+              wx.hideLoading()
+              wx.showToast({
+                title: '网络异常，请重新打开此页面。',
+              })
             }
           })
-          col.where({
-          }).get({
-            success: function (res) {
-              that.setData({
-                profileid:res.data[0]._id
-              })
-              console.log("successed"+that.data.profileid)
-            },
+        }else{
+          that.profileId = res.data[0]._id;
+          that.setData({
+            age: res.data[0].age,
+            sex: res.data[0].sex,
+            place: res.data[0].place,
+            phone: res.data[0].phone,
+            email: res.data[0].email,
+            show: res.data[0].show,
           })
+          wx.hideLoading()
         }
       },
-      complete:function(){
-        console.log("complete"+r)
-        that.setData({
-          profileid: r.data[0]._id,
-          age:r.data[0].age,
-          sex:r.data[0].sex,
-          place:r.data[0].place,
-          phone:r.data[0].phone,
-          email:r.data[0].email,
-          show:r.data[0].show,
+      fail:function(e) {
+        wx.hideLoading()
+        wx.showToast({
+          title: '网络异常，请重新打开此页面。',
         })
-        var i=parseInt(that.data.sex)
-        var c="items["+i+"].checked"
-        console.log("i"+i+"    "+c)
-        that.setData({
-          [c]:true
-        }) 
-        console.log("complete"+that.data.profileid)
       }
     })
   },
-  onReady: function () {
-    // 页面渲染完成  
+
+  reset: function(e) {
+    this.setData({
+      age: 0,
+      sex: '未知',
+      place: ['', '', ''],
+      show: false,
+      phone: '',
+      email: '',
+    })
   },
-  onShow: function () {
-    // 页面显示  
-  },
-  onHide: function () {
-    // 页面隐藏  
-  },
-  onUnload: function () {
-    // 页面关闭  
-  },
-  formSubmit: function (e) {
+
+  submit: function (e) {
     var that = this;
-    console.log(e)
-    var formData = e.detail.value;
-    that.modalTap();
+
+    if (!this.profileId) {
+      wx.showToast({
+        title: '页面异常，请重新打开该页面',
+        icon: 'none'
+      })
+    }
+
+    if (this.data.phone && !/^(?:13\d|15\d|18\d|17\d)\d{5}(\d{3}|\*{3})$/.test(this.data.phone)) {
+      wx.showToast({
+        title: '手机号错误',
+        icon: 'none'
+      })
+      return
+    }
+    if (this.data.email && !/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.data.email)) {
+      wx.showToast({
+        title: '邮箱错误',
+        icon: 'none'
+      })
+      return
+    }
+
+    wx.showModal({
+      title: '确认提交',
+      content: '确认提交吗？',
+      success: function(res) {
+        if (res.confirm) {
+          that.confirmSubmit()
+        }
+      }
+    })
   },
-  formReset: function () {
-    console.log('form发生了reset事件');
-    this.modalTap2();
-  }
+
+  confirmSubmit: function () {
+    var that = this
+
+    col.doc(that.profileId).update({
+      data: {
+        age: that.data.age,
+        sex: that.data.sex,
+        place: that.data.place,
+        phone: that.data.phone,
+        email: that.data.email,
+        show: that.data.show,
+      },
+      success: function (res) {
+        console.log(res)
+        wx.showToast({
+          title: '提交成功',
+        })
+      },
+      fail: function (res) {
+        console.log(res)
+        wx.showToast({
+          title: '提交失败',
+          icon: 'none'
+        })
+      }
+    })
+  },
 })  

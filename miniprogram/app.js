@@ -9,7 +9,7 @@ App({
         traceUser: true,
         env: 'test-share-92a8ff'
       })
-      console.log('wx.cloud init.  env: test-share')
+      console.log('小程序云已加载: test-share')
     }
 
     this.globalData = {}

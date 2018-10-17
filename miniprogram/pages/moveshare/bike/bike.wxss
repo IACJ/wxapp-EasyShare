@@ -33,6 +33,7 @@
   width: 300rpx;
   font-size: 20pt;
   border-bottom: #AAA;
+  z-index: 2;
 }
 
 .chooseIdArea{

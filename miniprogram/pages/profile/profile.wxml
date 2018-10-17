@@ -1,93 +1,91 @@
-<!--pages/profile/profile.wxml-->
-<view id="adduser">  
-    <form bindsubmit="formSubmit" bindreset="formReset">  
-         <!--昵称框-->
-         <view class="section">  
-            <view class="section__title">昵称:</view>  
-            <view class='form-group'>  
-                <input type="text" class="input-text" name="username" value="{{userinfo}}" disabled/>  
-            </view>      
+<!--pages/profile/profile.wxml -->
+<view class='page' style='height:{{pageHeight}}px'> 
+  <!-- 昵称 -->
+  <view class="row">  
+    <view class="inputLabel">昵称:</view>  
+    <view class='inputView'>  
+      <input class="input_disable" name="username" value="{{nickName}}" disabled />  
+    </view>      
+  </view>  
+
+  <!--年龄-->
+  <view class="row">  
+    <view class="inputLabel">年龄:</view>  
+    <view class='inputView'>  
+      <slider bindchange="bindAgeChange" value="{{age}}" name="age" show-value></slider>  
+    </view>      
+  </view> 
+
+  <!--性别--> 
+  <view class="row">  
+    <view class="inputLabel">性别:</view>  
+    <view class='inputView'>  
+      <radio-group bindchange="bindSexChange" name="gender">  
+        <label wx:for='{{genderList}}' wx:key='{{item}}'>
+          <radio value='{{item}}' checked='{{item === sex}}'/>{{item}}
+        </label>    
+      </radio-group>  
+    </view>      
+  </view>  
+
+  <!--区域-->
+  <view class="row">  
+    <view class="inputLabel">地区:</view>  
+    <view class='inputView'>  
+      <picker mode="region" 
+          bindchange="bindPickerChange"
+          value="{{place}}" >  
+        <view class="picker">  
+          <input type="hidden" disabled="true" value="{{place[0]}}"/>  
+          <input type="hidden" disabled="true" value="{{place[1]}}"/>  
+          <input type="hidden" disabled="true" value="{{place[2]}}"/>  
         </view>  
-
-        <!--年龄-->
-        <view class="section section_gap">  
-            <view class="section__title">年龄:</view>  
-            <view class='form-group'>  
-                <slider bindchange="bindAgeChange" value="{{age}}" name="age" show-value ></slider>  
-            </view>      
-        </view> 
-
-        <!--性别--> 
-        <view class="section section_gap">  
-            <view class="section__title">性别:</view>  
-            <view class='form-group'>  
-                <radio-group bindchange="bindSexChange" name="gender">  
-                  <label wx:for='{{items}}'>
-                  <radio value='{{item.name}}' checked='{{item.checked}}'/>{{item.value}}
-                  </label>  
-                  
-                </radio-group>  
-            </view>      
-        </view>  
-
-        <!--区域-->
-        <view class="section">  
-            <view class="section__title">地区:</view>  
-            <view class='form-group'>  
-                <picker bindchange="bindPickerChange" value="{{place}}" range="{{array}}">  
-                    <view class="picker">  
-                        <input type="hidden" disabled="true" name="addr" value="{{array[place]}}"/>  
-                    </view>  
-                </picker>  
-            </view>  
-        </view>  
-        <!-- 手机号 -->
-         <view class="section ">  
-            <view class="section__title">手机号:</view>  
-            <view class='form-group'>  
-                <input type="number" class="input-text" name="phonenumber" value="{{phone}}"  placeholder="可选" bindblur="bindPhone" maxlength='11'/>  
-            </view>      
-        </view> 
-        <!-- 邮箱 -->
-        <view class="section ">  
-            <view class="section__title">邮箱:</view>  
-            <view class='form-group'>  
-                <input type="text" class="input-text" name="email" value="{{email}}"  placeholder="可选" 
-                bindblur="bindEmail"/>  
-            </view>      
-        </view>
-          <!--是否显示-->
-        <view class="section section_gap">  
-            <view class="section__title">是否显示:</view>  
-            <view class='form-group'>  
-              
-              <switch bindchange="bindShowChange" checked="{{show}}" name="isshow"/>  
-            </view>  
-        </view>  
-
-
-        <!--提交 重置-->
-        <view class="section btn-area">  
-            <button formType="submit" class='button'>提交</button>  
-            <button formType="reset" class='button'>清空</button>  
-        </view>  
-    </form>  
-  
-     <!-- 黑框提示并消失 -->  
-    <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">  
-        {{notice_str}}  
-    </toast>  
-
-
-    <!-- 确认框 及 提示框 -->  
-    <view class="page__bd">  
-        <modal title="确认" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">  
-            确认提交么？  
-        </modal>  
-        <modal class="modal" hidden="{{modalHidden2}}" no-cancel bindconfirm="modalChange2" bindcancel="modalChange2">  
-            <view> 提示 </view>  
-            <view> 确认清空？ </view>  
-        </modal>  
+      </picker>  
     </view>  
+  </view>
+
+  <!-- 手机号 -->
+  <view class="row">  
+    <view class="inputLabel">手机号:</view>  
+    <view class='inputView'>  
+      <input type="number" 
+          class="input" 
+          name="phonenumber" 
+          value="{{phone}}"  
+          bindinput="bindPhone" 
+          maxlength='11'/>  
+    </view>      
+  </view> 
+
+  <!-- 邮箱 -->
+  <view class="row">  
+    <view class="inputLabel">邮箱:</view>  
+    <view class='inputView'>  
+      <input type="text" 
+          class="input" 
+          name="email" 
+          value="{{email}}"  
+          bindinput="bindEmail"/>  
+    </view>      
+  </view>
+
+  <!--是否显示-->
+  <view class="row">  
+    <view class="inputLabel">是否显示:</view>  
+    <view class='inputView'>  
+      <switch bindchange="bindShowChange" checked="{{show}}" name="isshow"/>  
+    </view>  
+  </view>  
+
+
+  <!--提交 重置-->
+  <view class="row">  
+    <button type='primary' bindtap="submit" class='btn'>提交</button>  
+    <button type='warn' bindtap="reset" class='btn'>清空</button>  
+  </view>  
+</view>
+
+
+
      
-</view>   
+ 
