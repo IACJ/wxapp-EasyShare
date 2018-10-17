@@ -28,6 +28,9 @@ exports.main = async (event, context) => {
     }
   
     // TODO:创建订单
+    result = await addOrder(event.userInfo.openId, thing._id)
+    console.log('result:')
+    console.log(result)
     
     result = await db.collection('bike').doc(thing._id).update({
       data: {
@@ -43,4 +46,23 @@ exports.main = async (event, context) => {
     console.error(e)
     return "Error."
   }
+}
+
+
+async function addOrder(user_openid, thing_id){
+  console.log('[addOrder] ' + user_openid + ' ' + thing_id)
+  let res = await db.collection('order').add({
+    data:{
+      'user_openid': user_openid,
+      'thing_type': 'bike',
+      'thing_id': thing_id,
+      'createTime': new Date(),
+      'status':{
+        'isRunning' : true
+      }
+    }
+  })
+  console.log('__________[res]:__________')
+  console.log(res)
+  return res
 }
