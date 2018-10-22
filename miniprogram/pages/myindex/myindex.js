@@ -1,61 +1,14 @@
 // pages/myindex/myindex.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
 
   /**
    * 用户点击右上角分享
@@ -65,6 +18,7 @@ Page({
   },
 
   btnScan: function(e) {
+    let that = this
     console.log(e)
     wx.scanCode({
       success: function(res) {
@@ -73,6 +27,7 @@ Page({
         function domainURI(str) {
           var durl = /https?:\/\/([^\/]+)\//i;
           domain = str.match(durl);
+          console.log(domain)
           return domain[1];
         }
 
@@ -83,6 +38,36 @@ Page({
           bizName = 'ofo单车'
         } else if (bizName === 'www.mobike.com'){
           bizName = '摩拜单车'
+        } else if (bizName === 'www.easyshare.com') {
+          console.log(res.result)
+
+          function parseUrl(url) {
+            var result = {};
+            var query = url.split("?")[1];
+            var queryArr = query.split("&");
+            queryArr.forEach(function (item) {
+              var obj = {};
+              var value = item.split("=")[1];
+              var key = item.split("=")[0];
+              obj[key] = value;
+              result[key] = value;
+            });
+            return result;
+          }
+          console.log(parseUrl(res.result))
+          let { share_type, thing_type, thing_numberId } = parseUrl(res.result)
+
+          wx.showModal({
+            title: '确认使用？',
+            content: '确认使用' + thing_numberId + '？',
+            success: function (e) {
+              console.log(e);
+              if (e.confirm) {
+                that.tryStartUse(share_type, thing_type, thing_numberId)
+              }
+            }
+          })
+          return
         }
 
         wx.showModal({
@@ -116,5 +101,51 @@ Page({
     wx.navigateTo({
       url: '/pages/fixshare/fixshare',
     })
+  },
+  tryStartUse: function (share_type, thing_type, thing_numberId) {
+  
+    let that = this
+    let name = thing_type+'_startUse'
+    wx.cloud.callFunction({
+      name: 'bike_startUse',
+      data: {
+        'id': Number(thing_numberId)
+      },
+      success: res => {
+        console.log('call success')
+        console.log(res)
+
+        if (res.result === 'Empty.') {
+          wx.showToast({
+            title: 'ID输入错误',
+            icon: 'none'
+          })
+        }
+        if (res.result === 'isUsing.') {
+          wx.showToast({
+            title: '该物品正在被他人使用',
+            icon: 'none'
+          })
+        }
+        if (res.result === 'OK.') {
+          
+          let url = '/pages/' + share_type + '/' + thing_type + '/' + thing_type
+          url += '?id=' + thing_numberId
+          console.log(url)
+          wx.navigateTo({
+            url: url,
+          })
+        }
+      },
+      fail: err => {
+        console.log('call fail')
+        console.log(err)
+        wx.showToast({
+          title: '开始使用失败',
+          icon: 'none'
+        })
+      }
+    })
   }
+  
 })

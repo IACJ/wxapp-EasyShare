@@ -25,6 +25,9 @@ exports.main = async (event, context) => {
     console.log(thing)
 
     // TODO:结束订单
+    let orderId = thing.orderList[0]
+    result = await finishOrder(orderId)
+    console.log(result)
 
     result = await db.collection('bike').doc(thing._id).update({
       data: {
@@ -40,4 +43,18 @@ exports.main = async (event, context) => {
     console.error(e)
     return "Error."
   }
+}
+
+// 结束订单
+async function finishOrder(id) {
+  console.log('[finishOrder] ' + id )
+  let res = await db.collection('order').doc(id).update({
+    data: { 
+      'finishTime': new Date(),
+      'status': {
+        'step': '完成'
+      }
+    }
+  })
+  return res
 }

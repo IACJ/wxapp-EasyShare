@@ -22,7 +22,7 @@
       </view>
     </navigator>
     
-    <navigator  url='../somepage/test'>
+    <navigator  url='../myorder/myorder'>
       <view class='me__item'>
         <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
         <text> 我的订单 </text>
