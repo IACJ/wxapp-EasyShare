@@ -171,7 +171,6 @@ Page({
 
   confirmSubmit: function () {
     var that = this
-
     col.doc(that.profileId).update({
       data: {
         age: that.data.age,

@@ -13,7 +13,9 @@ exports.main = async (event, context) => {
   try {
     result = await testDB.collection('todos').doc(event.id).update({
       data: {
-        description:event.desc,
+        test:{
+          second:"???"
+        }
       },
     })
     return result

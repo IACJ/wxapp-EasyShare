@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    open:"开锁",
+    close:"已关锁",
+    sort:"单车"
   },
 
   /**
@@ -93,6 +95,7 @@ Page({
         console.log(e)
         if (e.confirm) {
           that.tryStopUse()
+          that.lock()
         }
       }
     })
@@ -198,5 +201,54 @@ Page({
         })
       }
     })
+  },
+  unlock:function(e){
+    let that=this
+    wx.cloud.callFunction({
+      name:'bike_unlock',
+      data:{
+        'id':Number(that.data.id)
+      },
+      success:res=>{
+        console.log('call success')
+        console.log(res)
+        that.setData({
+          open:'已开锁',
+          close:'关锁'
+        })
+      },
+      fail:err=>{
+        wx.showToast({
+          title: '开锁失败',
+          icon:'none'
+        })
+      }
+    })
+  },
+  lock:function(e){
+    let that = this
+    wx.cloud.callFunction({
+      name: 'bike_lock',
+      data: {
+        'id': Number(that.data.id)
+      },
+      success: res => {
+        console.log('call success')
+        console.log(res)
+        that.setData({
+          open: '开锁',
+          close: '已关锁'
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          title: '关锁失败',
+          icon: 'none'
+        })
+      }
+    })
+  },
+  outId:function(e){
+    console.log(this.data.id)
   }
 })

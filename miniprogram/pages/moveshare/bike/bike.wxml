@@ -21,11 +21,13 @@
   </view>
   <view class='controlArea' wx:else>
     <view class='row'> 
-      <view class='item'>开锁</view>
-      <view class='item'>关锁</view>
+      <view class='item' bindtap='unlock'>{{open}}</view>
+      <view class='item' bindtap='lock'>{{close}}</view>
     </view>
     <view class='row'> 
-      <view class='item'>反馈故障</view>
+      <navigator url='../../feedback/feedback?id={{id}}&sort={{sort}}'>
+        <view class='item' bindtap='outId'>反馈故障</view>
+      </navigator>
       <view class='item' bindtap='btnStopUse'>结束使用</view>
     </view>
   </view>
