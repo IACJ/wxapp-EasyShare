@@ -13,7 +13,8 @@
     "pages/fixshare/fixshare",
     "pages/moveshare/bike/bike",
     "pages/feedback/feedback",
-    "pages/myorder/myorder"
+    "pages/myorder/myorder",
+    "pages/passage/passage"
   ],
   "window": {
     "backgroundTextStyle": "dark",

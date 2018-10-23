@@ -1,0 +1,58 @@
+<!--miniprogram/pages/passage/passage.wxml-->
+<view class='page'>
+  <!-- titleArea -->
+  <view class='titleArea'>
+    <view class='titile'>
+      {{title}}
+    </view>
+
+ 
+    <image class='titleImg' src='{{titleImg}}' mode='aspectFill'></image>
+ 
+  </view>
+
+   <!-- contentArea -->
+  <view class='contentArea'>
+    <view wx:for='{{itemList}}' class='item' wx:key='{{item}}'>
+
+      <!-- h1 -->
+      <view wx:if='{{item.type === "h1"}}' class='h1'>
+        {{item.content}}
+      </view>
+
+      <!-- h2 -->
+      <view wx:if='{{item.type === "h2"}}' class='h2'>
+        {{item.content}}
+      </view>
+
+      <!-- h3 -->
+      <view wx:if='{{item.type === "h3"}}' class='h3'>
+        {{item.content}}
+      </view>
+
+      <!-- text -->
+      <view wx:if='{{item.type === "text"}}' class='itemText'>
+        {{item.content}}
+      </view>
+
+      <!-- image -->
+      <view wx:if='{{item.type === "image"}}'  class='itemImage' >
+        <image src='{{item.content}}' 
+            class='contentImg'
+            mode='widthFix'></image>
+      </view>
+
+      <!-- emptyLine -->
+      <view wx:if='{{item.type === "emptyLine"}}'  class='emptyLine' >
+      </view>
+
+      <!-- solidLine -->
+      <view wx:if='{{item.type === "solidLine"}}'  class='solidLine' >
+      </view>
+
+    </view>
+
+  </view>
+
+</view>
+

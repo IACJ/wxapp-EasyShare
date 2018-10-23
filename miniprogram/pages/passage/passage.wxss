@@ -1,0 +1,80 @@
+/* miniprogram/pages/passage/passage.wxss */
+
+.page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleArea {
+  height: 300rpx;
+  /* border: 1px red solid; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
+}
+
+.titile {
+  font-size: 26pt;
+  color: #EEE;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  z-index: 2;
+}
+.titleImg {
+  position: absolute;
+  height: 300rpx;
+  width: 750rpx;
+}
+
+.contentArea {
+  width: 100%;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 24pt;
+}
+
+.h2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 20pt;
+}
+.h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 16pt;
+}
+
+.itemImage {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.contentImg {
+  width: 600rpx;
+}
+
+.emptyLine{
+  height: 50rpx;
+}
+
+.solidLine{
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #999;
+}
