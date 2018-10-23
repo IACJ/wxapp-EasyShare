@@ -13,33 +13,38 @@ exports.main = async (event, context) => {
   let result = null
 
   try {
-    result = await db.collection('bike').where({
+    let thingObjList = await db.collection('bike').where({
       numberId: _.eq(event.id)
     }).get()
-    console.log(result)
+    console.log('[根据编号查询]: ' + JSON.stringify(thingObjList))
 
-    if (result.data.length===0) {
+    if (thingObjList.data.length===0) {
       return "Empty."
     }
-    let thing = result.data[0]
-    console.log(thing)
+    let thing = thingObjList.data[0]
+    
+    // [是否被人使用]
     if (thing.status.isUsing) {
       return "isUsing."
     }
   
-    // TODO:创建订单
-    result = await addOrder(event.userInfo.openId, thing._id)
-    console.log('result:')
-    console.log(result)
+    // [创建订单]
+    result = await addOrder(event.userInfo.openId, thing._id, thing.numberId)
+    console.log('[创建订单]: ' + JSON.stringify(result))
+
+    let orderList = thing.orderList
+    orderList.unshift(result._id)
     
+    console.log(orderList)
     result = await db.collection('bike').doc(thing._id).update({
       data: {
-        status: {
+        'status': {
           isUsing: true
-        }
-      }
+        },
+        'orderList': orderList
+      },
     })
-    console.log(result)
+    console.log('[update]' + JSON.stringify(result))
 
     return "OK."
   } catch (e) {
@@ -48,21 +53,22 @@ exports.main = async (event, context) => {
   }
 }
 
-
-async function addOrder(user_openid, thing_id){
+// 添加订单
+async function addOrder(user_openid, thing_id, thing_numberId){
   console.log('[addOrder] ' + user_openid + ' ' + thing_id)
   let res = await db.collection('order').add({
     data:{
       'user_openid': user_openid,
+      'share_type':'moveshare',
       'thing_type': 'bike',
       'thing_id': thing_id,
+      'thing_numberId': thing_numberId,
       'createTime': new Date(),
+      'finishTime': null,
       'status':{
-        'isRunning' : true
+        'step' : '进行中'
       }
     }
   })
-  console.log('__________[res]:__________')
-  console.log(res)
   return res
 }
