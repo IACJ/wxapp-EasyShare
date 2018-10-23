@@ -26,11 +26,15 @@ Page({
       success: function(e){
         console.log(e)
         let passage = e.data
+        console.log(JSON.stringify(passage))
         that.setData({
           title : passage.title,
           titleImg : passage.titleImg,
           itemList: passage.itemList,
         })
+      },
+      fail: function(e) {
+        console.log(e)
       }
     })
   },
