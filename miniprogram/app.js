@@ -11,7 +11,10 @@ App({
       })
       console.log('小程序云已加载: test-share')
     }
+    let systemInfo = wx.getSystemInfoSync();
 
-    this.globalData = {}
+    this.globalData = {
+      'systemInfo': systemInfo
+    }
   }
 })
