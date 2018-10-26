@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
   let result = null
 
   try {
-    let thingObjList = await db.collection('bike').where({
+    let thingObjList = await db.collection(event.sort).where({
       numberId: _.eq(event.id)
     }).get()
     console.log('[根据编号查询]: ' + JSON.stringify(thingObjList))
@@ -29,14 +29,14 @@ exports.main = async (event, context) => {
     }
   
     // [创建订单]
-    result = await addOrder(event.userInfo.openId, thing._id, thing.numberId)
+    result = await addOrder(event.userInfo.openId, event.shareType, event.sort, thing._id, thing.numberId)
     console.log('[创建订单]: ' + JSON.stringify(result))
 
     let orderList = thing.orderList
     orderList.unshift(result._id)
     
     console.log(orderList)
-    result = await db.collection('bike').doc(thing._id).update({
+    result = await db.collection(event.sort).doc(thing._id).update({
       data: {
         'status': {
           isUsing: true
@@ -54,13 +54,13 @@ exports.main = async (event, context) => {
 }
 
 // 添加订单
-async function addOrder(user_openid, thing_id, thing_numberId){
+async function addOrder(user_openid, share_type,thing_type, thing_id, thing_numberId){
   console.log('[addOrder] ' + user_openid + ' ' + thing_id)
   let res = await db.collection('order').add({
     data:{
       'user_openid': user_openid,
-      'share_type':'moveshare',
-      'thing_type': 'bike',
+      'share_type': share_type,
+      'thing_type': thing_type,
       'thing_id': thing_id,
       'thing_numberId': thing_numberId,
       'createTime': new Date(),

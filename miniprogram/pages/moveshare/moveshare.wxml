@@ -4,13 +4,17 @@
 
 
   <view class='row'> 
-    <view class='item'> 共享汽车</view>
+    <navigator url='./car/car'>
+      <view class='item'> 共享汽车</view>
+    </navigator>
 
     <navigator url='./bike/bike'>
       <view class='item'> 共享单车</view>
     </navigator>
 
-    <view class='item'> 共享三轮</view>
+    <navigator url='./umbrella/umbrella'>
+      <view class='item'> 共享雨伞</view>
+    </navigator>
   </view>
 
   <view class='row'> 
@@ -20,7 +24,7 @@
   </view>
 
   <view class='row'> 
-    <view class='item'> 共享雨伞</view>
+    <view class='item'> 共享三轮</view>
     <view class='item'> 共享滑板</view>
     <view class='item'> 共享轮椅</view>
   </view>

@@ -16,9 +16,9 @@ exports.main = async (event, context) => {
   
   let addResult={}
   for (let i=0;i<100;i++){
-    addResult[100000 + i] =  await db.collection('bike').add({
+    addResult[100000 + i] = await db.collection('bike').add({
       data: {
-        description: "a sharing bick",
+        description: "a sharing bike",
         addTime: new Date(),
         orderList: [],
         reportLisy: [],

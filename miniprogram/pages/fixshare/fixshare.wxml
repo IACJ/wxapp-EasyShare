@@ -9,8 +9,12 @@
   </view>
 
   <view class='row'> 
-    <view class='item'> 共享按摩椅</view>
-    <view class='item'> 共享KTV</view>
+    <navigator url='./massageChair/massageChair'>
+      <view class='item'> 共享按摩椅</view>
+    </navigator>
+    <navigator url='./KTV/KTV'>
+      <view class='item'> 共享KTV</view>
+    </navigator>
     <view class='item'> 共享电影院</view>
   </view>
 

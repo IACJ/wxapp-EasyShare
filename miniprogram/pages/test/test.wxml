@@ -8,6 +8,14 @@
     重置共享单车数据库
   </button>
 
+  <button type='warn' class='btn' bindtap='resetCar' disabled='{{busy}}' loading='{{busy}}'>
+    重置共享汽车数据库
+  </button>
+
+  <button type='warn' class='btn' bindtap='resetUmbrella' disabled='{{busy}}' loading='{{busy}}'>
+    重置共享雨伞数据库
+  </button>
+
    <button type='warn' class='btn' bindtap='clearOrder' disabled='{{busy}}' loading='{{busy}}'>
     清空订单数据库
   </button>

@@ -13,13 +13,14 @@ exports.main = async (event, context) => {
   console.log(event)
   let result = null
   try {
-    result = await db.collection('bike').where({
+    result = await db.collection(event.sort).where({
       numberId: _.eq(event.id)
     }).get()
     console.log(result)
 
     let one = result.data[0]
-    result = await db.collection('bike').doc(one._id).update({
+    console.log(one)
+    result = await db.collection(event.sort).doc(one._id).update({
       data: {
         status: {
           isLocking: 'false'

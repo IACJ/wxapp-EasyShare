@@ -124,14 +124,25 @@ Page({
       },
       success: function (res) {
         console.log('成功',JSON.stringify(res))
+        wx.showToast({
+          title: '反馈成功',
+          //TODO   image:''如下
+          success:function(e){
+            setTimeout(function(){
+              wx.navigateBack({
+                delta: 1
+              })
+            },1500)
+          }
+        }) 
       },
       fail: function (res) {
         console.log('失败',JSON.stringify(res))
         wx.showToast({
           title: '网络异常，请重新打开此页面。',
-          image: '../../images/icon/xx.png',
+          image: '../../images/icon/xx.png',  //TODO:
         })
       }
     })
-  }
+  },
 })

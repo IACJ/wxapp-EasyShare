@@ -1,7 +1,7 @@
 <!--miniprogram/pages/feedback/feedback.wxml-->
 <view class='page'>
   <view>
-    <view class='title'>种类(选填)：</view>
+    <view class='title'>种类(选填)</view>
     <view class='input-view'>  
       <picker bindchange="bindPickerChange" 
         value="{{sort}}"
@@ -14,7 +14,7 @@
         </view>  
       </picker>  
     </view>
-    <view class='title'>编号：</view> 
+    <view class='title'>编号</view> 
     <view class='input-view'>  
       <input type="number" 
           class="input-number" 

@@ -228,6 +228,13 @@ Page({
     this.cloudFnCall('resetBike')
   },
 
+  resetCar: function(e){
+    this.cloudFnCall('resetCar')
+  },
+  resetUmbrella: function(e){
+    this.cloudFnCall('resetUmbrella')
+  },
+
   clearOrder: function (e) {
     this.cloudFnCall('clearOrder')
   },
