@@ -1,2 +1,18 @@
 <!--pages/map/map.wxml-->
-<text>此页应做地图</text>
+<view class="page">
+  <view class="mapView">
+    <map
+      id="myMap"
+      style="width: 100%; height: {{pageHeight}}px;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      show-compass
+      show-location
+      enable-overlooking
+      enable-rotate
+    ></map>
+  </view>
+
+
+</view>

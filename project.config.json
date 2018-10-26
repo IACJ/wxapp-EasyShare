@@ -28,13 +28,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
 					"name": "意见反馈",
 					"pathName": "pages/feedback/feedback",
 					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "passage",
+					"pathName": "pages/passage/passage",
+					"query": "id=5bcf2362cb2b8bc75b94c245"
 				}
 			]
 		}
