@@ -17,49 +17,51 @@
     "pages/moveshare/car/car",
     "pages/moveshare/umbrella/umbrella",
     "pages/fixshare/KTV/KTV",
-    "pages/fixshare/massageChair/massageChair"
+    "pages/fixshare/massageChair/massageChair",
+    "pages/passage/passage"
   ],
   "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#2a579a",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "Easy Share",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "position": "fixed",
-    "backgroundColor": "#2a579a",
-    "color": "#DCEDC8",
-    "selectedColor": "#DCEDC8",
+    "backgroundColor": "#ffffff",
+    "color": "#8B8989",
+    "selectedColor": "#000000",
+    "borderStyle":"white",
     "list": [
       {
         "pagePath": "pages/myindex/myindex",
         "text": "主页",
         "iconPath": "images/icon/home.png",
-        "selectedIconPath": "images/icon/homeL.png"
+        "selectedIconPath": "images/icon/homef.png"
       },
       {
         "pagePath": "pages/info/info",
         "text": "资讯",
         "iconPath": "images/icon/message.png",
-        "selectedIconPath": "images/icon/messageL.png"
+        "selectedIconPath": "images/icon/messagef.png"
       },
       {
         "pagePath": "pages/test/test",
         "text": "测试",
-        "iconPath": "images/icon/publish.png",
-        "selectedIconPath": "images/icon/publish.png"
+        "iconPath": "images/icon/test.png",
+        "selectedIconPath": "images/icon/testf.png"
       },
       {
         "pagePath": "pages/map/map",
         "text": "地图",
-        "iconPath": "images/icon/find.png",
-        "selectedIconPath": "images/icon/findL.png"
+        "iconPath": "images/icon/map.png",
+        "selectedIconPath": "images/icon/mapf.png"
       },
       {
         "pagePath": "pages/me/me",
         "text": "我的",
-        "iconPath": "images/icon/mine.png",
-        "selectedIconPath": "images/icon/mineL.png"
+        "iconPath": "images/icon/user.png",
+        "selectedIconPath": "images/icon/userf.png"
       }
     ]
   }

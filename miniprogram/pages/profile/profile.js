@@ -59,7 +59,7 @@ Page({
   onLoad: function (options) {
     console.log('onLoad')
     var that = this
-    let systemInfo = wx.getSystemInfoSync();
+
     this.setData({
       'pageHeight': systemInfo.windowHeight
     })

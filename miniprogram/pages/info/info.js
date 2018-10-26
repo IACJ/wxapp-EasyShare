@@ -1,3 +1,5 @@
+const db = wx.cloud.database({})
+
 Page({
   /*首页页面的初始数据 */
   data: {
@@ -17,40 +19,37 @@ Page({
       { name: 'heat', value: '热度' }
     ],
     //图片展示页列表
-    paintingList: [],
+    infoList: [],
     cursor: 0,
     loading: true,
   },
-  onShow: function () {
+  onLoad: function () {
 
     var that = this;
     this.setData({
       cursor: 0
     })
+    db.collection('info').where({}).get({
+      success: function(res) {
+        console.log(res)
+        if (res.data.length === 0) {
+          wx.showToast({
+            title: '没有更多了哦~',
+            icon: 'none'
+          })
+        } else {
+          that.setData({
+            'infoList': res.data
+          })
+        }
+      },
+      complete: function(e) {
+        that.setData({
+          'loading':false
+        })
+      }
+    })
 
-    // wx.request({
-    //   url: 'https://www.iacj.win/matches/painting/list', //仅为示例，并非真实的接口地址
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   data: {
-    //     limit0: this.data.cursor,
-    //     limit1: 5
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data)
-    //     that.setData({
-    //       paintingList: res.data.paintingList,
-    //       cursor: that.data.cursor + res.data.paintingList.length,
-    //       loading: false,
-    //     })
-    //   },
-    //   fail: function () {
-    //     wx.showToast({
-    //       title: '网络连接失败',
-    //     })
-    //   }
-    // })
   },
 
 
@@ -66,48 +65,67 @@ Page({
     });
   },
 
-  //点击四大功能模块-购画
+  //点击四大功能模块
   clickBuypaint: function () {
     this.setData({
       selectState: [1, 0, 0, 0],
     })
-    //this.onShow();
+
   },
-  //点击四大功能模块-阶梯课堂
+  //点击四大功能模块-
   clickLadderclass: function () {
     this.setData({
       selectState: [0, 1, 0, 0],
     })
-    //this.onShow();
+    
   },
-  //点击四大功能模块-公益之窗
+  //点击四大功能模块-
   clickPublicwindow: function () {
     this.setData({
       selectState: [0, 0, 1, 0],
     })
-    //this.onShow();
+  
   },
-  //点击四大功能模块-联名X
+  //点击四大功能模块-
   clickJointly: function () {
     this.setData({
       selectState: [0, 0, 0, 1],
     })
-    //this.onShow();
+
   },
   //点击下面的图片列表的时候
   onItemClick: function (event) {
-    var targetPath = "../detail/detail";
     if (event.currentTarget.dataset.id != null) {
-      targetPath = targetPath + "?id=" + event.currentTarget.dataset.id;
+      let targetPath = "/pages/passage/passage" + "?id=" + event.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: targetPath,
+      });
     }
-    wx.navigateTo({
-      url: targetPath,
-    });
+
   },
   //加载更多
   loadMore: function (event) {
-
-    // var that = this;
+    var that = this;
+    that.setData({
+      'loading': true
+    })
+    db.collection('info').where({}).get({
+      success: function (res) {
+        console.log(res)
+        if (res.data.length === 0) {
+          wx.showToast({
+            title: '没有更多了哦~',
+            duration: 2000
+          })
+        }
+      },
+      complete: function (e) {
+        that.setData({
+          'loading': false
+        })
+      }
+    })
+   
     // wx.request({
     //   url: 'https://www.iacj.win/matches/painting/list', //仅为示例，并非真实的接口地址
     //   header: {

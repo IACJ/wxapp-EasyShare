@@ -1,26 +1,45 @@
 <!--pages/fixshare/fixshare.wxml-->
 <view class='page'>
-  <view class='title'> 固定物品共享 </view>
-
+<view class='blank'></view>
   <view class='row'> 
-    <view class='item'> 共享浴室</view>
-    <view class='item'> 共享宾馆</view>
-    <view class='item'> 共享沙发</view>
+    <view class='item icon-bathroom'></view>
+    <view class='item icon-hotel'></view>
+    <view class='item icon-sofa'></view>
+  </view>
+  <view class='nameRow'>
+  <view class='name'>沐浴室</view>
+  <view class='name'>旅馆</view>
+  <view class='name'>沙发</view>  
   </view>
 
   <view class='row'> 
     <navigator url='./massageChair/massageChair'>
-      <view class='item'> 共享按摩椅</view>
+      <view class='item icon-chair'></view>
     </navigator>
+
     <navigator url='./KTV/KTV'>
-      <view class='item'> 共享KTV</view>
+      <view class='item icon-ktv'></view>
     </navigator>
-    <view class='item'> 共享电影院</view>
+    
+    <view class='item icon-cinema'></view>
+  </view>
+
+  <view class='nameRow'>
+    <view class='name'>按摩椅</view>
+    <view class='name'>KTV</view>
+    <view class='name'>电影院</view>  
   </view>
 
   <view class='row'> 
-    <view class='item'> 共享会议室</view>
-    <view class='item'> 共享茶水间</view>
-    <view class='item'> 共享阅读亭</view>
+    <view class='item icon-meetingroom'></view>
+    <view class='item icon-tea'></view>
+    <view class='item icon-reading'></view>
   </view>
+  <view class='nameRow'>
+  <view class='name'>会议室</view>
+  <view class='name'>茶水间</view>
+  <view class='name'>阅读亭</view>  
+  </view>
+  <view class='blank'></view>
+  <view class='blank'></view>
 </view>

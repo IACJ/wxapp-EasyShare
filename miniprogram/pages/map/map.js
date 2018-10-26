@@ -1,66 +1,29 @@
 // pages/map/map.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    pageHeight:0,
+    latitude: 23.099994,
+    longitude: 113.324520,
+    markers: [{
+      id: 1,
+      latitude: 23.099994,
+      longitude: 113.324520,
+      name: 'T.I.T 创意园'
+    }],
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad:function (e) {
+    this.setData({
+      'pageHeight': getApp().globalData.systemInfo.windowHeight
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onReady: function (e) {
+    this.mapCtx = wx.createMapContext('myMap')
+    this.setData({
+      'pageHeight': getApp().globalData.systemInfo.windowHeight
+    })
+    this.mapCtx.moveToLocation()
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

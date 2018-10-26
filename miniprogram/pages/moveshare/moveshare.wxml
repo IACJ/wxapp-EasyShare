@@ -1,31 +1,47 @@
 <!--pages/moveshare/moveshare.wxml-->
 <view class='page'>
-  <view class='title'> 移动物品共享 </view>
-
-
+<view class='blank'></view>
   <view class='row'> 
+
     <navigator url='./car/car'>
-      <view class='item'> 共享汽车</view>
+      <view class='item icon-car'></view>
     </navigator>
 
     <navigator url='./bike/bike'>
-      <view class='item'> 共享单车</view>
+      <view class='item icon-bike'></view>
     </navigator>
 
+    <view class='item icon-wheel'></view>
+  </view>
+  <view class='nameRow'>
+    <view class='name'>汽车</view>
+    <view class='name'>自行车</view>
+    <view class='name'>三轮车</view>  
+  </view>
+
+  <view class='row'> 
+    <view class='item icon-charger'></view>
+    <view class='item icon-camera'></view>
+    <view class='item icon-medical'></view>
+  </view>
+  <view class='nameRow'>
+  <view class='name'>充电宝</view>
+  <view class='name'>摄影机</view>
+  <view class='name'>医疗箱</view>  
+  </view>
+
+  <view class='row'> 
     <navigator url='./umbrella/umbrella'>
-      <view class='item'> 共享雨伞</view>
+      <view class='item icon-umbrella'></view>
     </navigator>
+    <view class='item icon-skateboard'></view>
+    <view class='item icon-wheelchair'></view>
   </view>
-
-  <view class='row'> 
-    <view class='item'> 共享充电宝</view>
-    <view class='item'> 共享摄像机</view>
-    <view class='item'> 共享医疗箱</view>
+  <view class='nameRow'>
+    <view class='name'>雨伞</view>
+    <view class='name'>滑板车</view>
+    <view class='name'>轮椅</view>  
   </view>
-
-  <view class='row'> 
-    <view class='item'> 共享三轮</view>
-    <view class='item'> 共享滑板</view>
-    <view class='item'> 共享轮椅</view>
-  </view>
+  <view class='blank'></view>
+  <view class='blank'></view>
 </view>
