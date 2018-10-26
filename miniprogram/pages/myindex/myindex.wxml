@@ -1,13 +1,19 @@
 <!--pages/myindex/myindex.wxml-->
 
 <view class='page'>
-  <view class='title'> 共享，让生活变得简单！ </view>
-
-  <view class='btnScan' bindtap='btnScan'> 扫码使用按钮</view>
-
-  <view class='chooseArea'> 
-    <view class='btnBlock' bindtap='btnMoveShare'> 移动共享物品</view>
-    <view class='btnBlock' bindtap='btnFixShare'> 固定共享物品</view>
+  <view class='topArea'>
+    <image src='../../images/homeboy.png' mode='top'></image>
   </view>
+  <view class='btnScan' bindtap='btnScan'> 扫码立即使用</view>
 
+  <view class='chooseArea'>
+    <view class='btnRoom' bindtap='btnMoveShare'>
+    <view class='btnBlock icon-move' btnRoom></view>
+    <br>移动物品</br>
+    </view>
+    <view class='btnRoom' bindtap='btnFixShare'>
+    <view class='btnBlock icon-fix'></view>
+    <br>固定物品</br>
+    </view>
+  </view>
 </view>
