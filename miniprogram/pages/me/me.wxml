@@ -2,7 +2,7 @@
 <view class="me__">
   <view  class="me__userinfo">
    
-      <image src="{{userInfo ? userInfo.avatarUrl : '/images/icon/mine.png'}}" class="me__avatar"></image>
+      <image src="{{userInfo ? userInfo.avatarUrl : '/images/icon/user.png'}}" class="me__avatar"></image>
       <view class='me__nickname'> {{userInfo?userInfo.nickName:'未登录'}} </view>
   </view> 
 
