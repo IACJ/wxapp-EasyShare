@@ -25,7 +25,7 @@
         编号:{{item.thing_numberId}}
       </view>
       <view>
-        创建时间:{{item.createTime}}
+        创建时间:{{item.createTimeStr}}
       </view>
       <view>
         状态:{{item.status.step}}
