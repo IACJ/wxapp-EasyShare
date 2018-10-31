@@ -1,18 +1,15 @@
 <!--miniprogram/pages/moveshare/bike/bike.wxml-->
 
 <view class='page'>
-  <view class='title'> 共享单车 </view>
-
-
+<view class='item icon-bike'></view>
   <view class='chooseIdArea'wx:if='{{!id}}' >
     <view class='row'> 
-      <view class='item' bindtap='scanToChoose'> 扫码选中</view>
+      <view class='btnScan' bindtap='scanToChoose'> 扫码选中</view>
     </view>
 
     <view class='row'> 
       <view class='item' bindtap='chooseId'> 编号选中</view>
       <input class='input' 
-        placeholder='________' 
         type='number' 
         maxlength='8'
         value='{{id}}'
