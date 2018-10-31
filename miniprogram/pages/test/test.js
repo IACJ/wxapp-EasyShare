@@ -5,7 +5,6 @@ const testDB = wx.cloud.database({
 
 const col=testDB.collection('todos')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -92,7 +91,13 @@ Page({
       }
     })
   },
-
+  bindsort:function(e){
+    console.log(e)
+    this.setData({
+      sort:e.detail.value
+    })
+    console.log(this.data.sort)
+  },
   wxapp_Remove: function(){
     console.log('小程序端_删除数据')
     col.doc('W6xD_tdfTEkKDbvK').remove({
@@ -225,7 +230,17 @@ Page({
   },
 
   resetBike: function (e) {
-    this.cloudFnCall('resetBike')
+    wx.cloud.callFunction({
+      // 要调用的云函数名称
+      name: 'resetBike',
+      data: {
+        'sort': this.data.sort
+      },
+      success: res => {
+        console.log('call success')
+        console.log(res)
+      }
+    })
   },
 
   resetCar: function(e){

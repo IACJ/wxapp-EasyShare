@@ -18,7 +18,20 @@
     "pages/moveshare/umbrella/umbrella",
     "pages/fixshare/KTV/KTV",
     "pages/fixshare/massageChair/massageChair",
-    "pages/passage/passage"
+    "pages/passage/passage",
+    "pages/moveshare/wheel/wheel",
+    "pages/moveshare/charger/charger",
+    "pages/moveshare/camera/camera",
+    "pages/moveshare/medical/medical",
+    "pages/moveshare/skateboard/skateboard",
+    "pages/moveshare/wheelchair/wheelchair",
+    "pages/fixshare/bathroom/bathroom",
+    "pages/fixshare/hotel/hotel",
+    "pages/fixshare/sofa/sofa",
+    "pages/fixshare/cinema/cinema",
+    "pages/fixshare/meetingroom/meetingroom",
+    "pages/fixshare/reading/reading",
+    "pages/fixshare/tea/tea"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -31,7 +44,7 @@
     "backgroundColor": "#ffffff",
     "color": "#8B8989",
     "selectedColor": "#000000",
-    "borderStyle":"white",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/myindex/myindex",

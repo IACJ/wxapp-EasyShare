@@ -2,4 +2,20 @@
 .mapView{
   padding: 0rpx;
 }
+.cover-layout {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-bottom:50px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.self-location {
+  width: 76rpx;
+  height: 76rpx;
+}
 

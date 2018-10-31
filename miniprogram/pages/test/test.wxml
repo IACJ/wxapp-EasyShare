@@ -4,6 +4,7 @@
     在此页面测试
   </view>
 
+  <input class='input-view' bindinput='bindsort' placeholder='请输入要重置的名'></input>
   <button type='warn' class='btn' bindtap='resetBike' disabled='{{busy}}' loading='{{busy}}'>
     重置共享单车数据库
   </button>

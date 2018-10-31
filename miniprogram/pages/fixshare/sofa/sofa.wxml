@@ -1,0 +1,51 @@
+<!--miniprogram/pages/fixshare/sofa/sofa.wxml-->
+<view class='page'>
+  <view class='title'> 共享沙发 </view>
+
+
+  <view class='chooseIdArea'wx:if='{{!id}}' >
+    <view class='row'> 
+      <view class='item' bindtap='scanToChoose'> 扫码选中</view>
+    </view>
+
+    <view class='row'> 
+      <view class='item' bindtap='chooseId'> 编号选中</view>
+      <input class='input' 
+        placeholder='________' 
+        type='number' 
+        maxlength='8'
+        value='{{id}}'
+        bindinput='bindinput'></input>
+    </view>
+  </view>
+  <view class='controlArea' wx:else>
+    <view class='row'> 
+        <input class='input' 
+        disabled
+        type='number' 
+        maxlength='8'
+        value='{{inputId}}'
+        bindinput='bindinput'></input>
+    </view>
+    <view class='row'> 
+      <!-- <view class='item' bindtap='unlock'>{{open}}</view>
+      <view class='item' bindtap='lock'>{{close}}</view> -->
+      <view >已开始计时</view>
+    </view>
+    <view class='row'> 
+      <navigator url='../../feedback/feedback?id={{id}}&sort={{sort}}'>
+        <view class='item' bindtap='outId'>反馈故障</view>
+      </navigator>
+      <view class='item' bindtap='btnStopUse'>结束使用</view>
+    </view>
+  </view>
+
+  <view class='row'> 
+    <view class='item'> 产品说明</view>
+    <view class='item'> 使用说明</view>
+    <view class='item'> 计价说明</view>
+  </view>
+
+</view>
+
+

@@ -10,8 +10,11 @@
     <navigator url='./bike/bike'>
       <view class='item icon-bike'></view>
     </navigator>
+    
+    <navigator url='./wheel/wheel'>
+      <view class='item icon-wheel'></view>
+    </navigator>
 
-    <view class='item icon-wheel'></view>
   </view>
   <view class='nameRow'>
     <view class='name'>汽车</view>
@@ -20,9 +23,18 @@
   </view>
 
   <view class='row'> 
-    <view class='item icon-charger'></view>
-    <view class='item icon-camera'></view>
-    <view class='item icon-medical'></view>
+    <navigator url='./charger/charger'>
+      <view class='item icon-charger'></view>
+    </navigator>
+
+    <navigator url='./camera/camera'>
+      <view class='item icon-camera'></view>
+    </navigator>
+
+    <navigator url='./medical/medical'>
+      <view class='item icon-medical'></view>
+    </navigator>
+
   </view>
   <view class='nameRow'>
   <view class='name'>充电宝</view>
@@ -34,8 +46,15 @@
     <navigator url='./umbrella/umbrella'>
       <view class='item icon-umbrella'></view>
     </navigator>
-    <view class='item icon-skateboard'></view>
-    <view class='item icon-wheelchair'></view>
+
+    <navigator url='./skateboard/skateboard'>
+      <view class='item icon-skateboard'></view>
+    </navigator>
+
+    <navigator url='./wheelchair/wheelchair'>
+      <view class='item icon-wheelchair'></view>
+    </navigator>
+    
   </view>
   <view class='nameRow'>
     <view class='name'>雨伞</view>

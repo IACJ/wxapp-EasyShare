@@ -38,8 +38,8 @@
 				},
 				{
 					"id": 1,
-					"name": "passage",
-					"pathName": "pages/passage/passage",
+					"name": "fixhshare",
+					"pathName": "pages/fixshare/fixshare",
 					"query": "id=5bcf2362cb2b8bc75b94c245"
 				}
 			]

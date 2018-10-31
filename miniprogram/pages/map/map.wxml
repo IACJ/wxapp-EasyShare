@@ -3,15 +3,25 @@
   <view class="mapView">
     <map
       id="myMap"
-      style="width: 100%; height: {{pageHeight}}px;"
+      style="width: 100%; height: {{windowHeight}}px;"
       latitude="{{latitude}}"
       longitude="{{longitude}}"
       markers="{{markers}}"
+      scale="{{scale}}"
+      bindregionchange='regionChange'
       show-compass
       show-location
       enable-overlooking
       enable-rotate
     ></map>
+
+
+    <cover-view class=''>
+    
+    </cover-view>
+    <cover-view class='cover-layout' bindtap='selfLocationClick'>
+      <cover-image class='self-location' src='../../images/icon/self-location.png'></cover-image>
+    </cover-view>
   </view>
 
 

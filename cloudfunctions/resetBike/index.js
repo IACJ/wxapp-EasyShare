@@ -10,15 +10,15 @@ const _ = db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
 
-  let removeResult = await db.collection('bike').where({
+  let removeResult = await db.collection(event.sort).where({
     _id: _.neq('000000')
   }).remove()
   
   let addResult={}
   for (let i=0;i<100;i++){
-    addResult[100000 + i] = await db.collection('bike').add({
+    addResult[100000 + i] = await db.collection(event.sort).add({
       data: {
-        description: "a sharing bike",
+        description: "a sharing " + event.sort,
         addTime: new Date(),
         orderList: [],
         reportLisy: [],
