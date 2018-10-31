@@ -14,6 +14,10 @@
     "pages/moveshare/bike/bike",
     "pages/feedback/feedback",
     "pages/myorder/myorder",
+    "pages/moveshare/car/car",
+    "pages/moveshare/umbrella/umbrella",
+    "pages/fixshare/KTV/KTV",
+    "pages/fixshare/massageChair/massageChair",
     "pages/passage/passage"
   ],
   "window": {

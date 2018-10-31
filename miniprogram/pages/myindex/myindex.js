@@ -1,4 +1,6 @@
 // pages/myindex/myindex.js
+const { scanQRCode } = require('../../utils/scanQRCode.js')
+console.log(scanQRCode)
 Page({
 
   data: {
@@ -16,8 +18,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+  btnScan :function(e){
+    scanQRCode(this,'navigate')
+  },
 
-  btnScan: function(e) {
+  btnScan_old: function(e) {
     let that = this
     console.log(e)
     wx.scanCode({

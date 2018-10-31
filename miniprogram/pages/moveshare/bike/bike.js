@@ -1,4 +1,5 @@
 // miniprogram/pages/moveshare/bike/bike.js
+const { scanQRCode } = require('../../../utils/scanQRCode.js')
 Page({
 
   /**
@@ -17,6 +18,7 @@ Page({
     console.log(options)
     if (options.id){
       this.setData({
+        'inputId': options.id,
         'id': options.id
       })
     }
@@ -106,20 +108,7 @@ Page({
     })
   },
   scanToChoose:function(e) {
-    wx.scanCode({
-      success: function (res) {
-        console.log('扫码success')
-        console.log(res)
-      },
-      fail: function (err) {
-        console.log('扫码fail')
-        console.log(err)
-        wx.showToast({
-          title: '未能识别二维码',
-          icon: 'none'
-        })
-      }
-    })
+    scanQRCode(this,'redirect')
   },
   tryStartUse:function(id){
     let that = this
@@ -130,7 +119,9 @@ Page({
       // 要调用的云函数名称
       name: 'bike_startUse',
       data:{
-        'id':Number(id)
+        'id':Number(id),
+        'sort':'bike',
+        'shareType':'moveshare'
       },
       success: res => {
         console.log('call success')
@@ -175,12 +166,12 @@ Page({
       // 要调用的云函数名称
       name: 'bike_stopUse',
       data: {
-        'id': Number(this.data.id)
+        'id': Number(this.data.id),
+        'sort': 'bike',
       },
       success: res => {
         console.log('call success')
         console.log(res)
-
         if (res.result === 'OK.') {
           that.setData({
             'id': null
@@ -209,20 +200,26 @@ Page({
   },
   unlock:function(e){
     let that=this
+    wx.showLoading({
+      title: '正在开锁',
+    })
     wx.cloud.callFunction({
       name:'bike_unlock',
       data:{
-        'id':Number(that.data.id)
+        'id':Number(that.data.id),
+        'sort':'bike'
       },
       success:res=>{
         console.log('call success')
         console.log(res)
+        wx.hideLoading()
         that.setData({
           open:'已开锁',
           close:'关锁'
         })
       },
       fail:err=>{
+        wx.hideLoading()
         wx.showToast({
           title: '开锁失败',
           icon:'none'
@@ -232,20 +229,26 @@ Page({
   },
   lock:function(e){
     let that = this
+    wx.showLoading({
+      title: '正在关锁',
+    })
     wx.cloud.callFunction({
       name: 'bike_lock',
       data: {
-        'id': Number(that.data.id)
+        'id': Number(that.data.id),
+        'sort':'bike'
       },
       success: res => {
         console.log('call success')
         console.log(res)
+        wx.hideLoading()
         that.setData({
           open: '开锁',
           close: '已关锁'
         })
       },
       fail: err => {
+        wx.hideLoading()
         wx.showToast({
           title: '关锁失败',
           icon: 'none'

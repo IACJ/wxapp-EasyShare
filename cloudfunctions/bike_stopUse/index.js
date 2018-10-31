@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
   let result = null
 
   try {
-    result = await db.collection('bike').where({
+    result = await db.collection(event.sort).where({
       numberId: _.eq(event.id)
     }).get()
     console.log(result)
@@ -29,7 +29,7 @@ exports.main = async (event, context) => {
     result = await finishOrder(orderId)
     console.log(result)
 
-    result = await db.collection('bike').doc(thing._id).update({
+    result = await db.collection(event.sort).doc(thing._id).update({
       data: {
         status: {
           isUsing: false

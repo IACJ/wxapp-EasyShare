@@ -13,14 +13,21 @@
   </view>
 
   <view class='row'> 
-    <view class='item icon-chair'></view>
-    <view class='item icon-ktv'></view>
+    <navigator url='./massageChair/massageChair'>
+      <view class='item icon-chair'></view>
+    </navigator>
+
+    <navigator url='./KTV/KTV'>
+      <view class='item icon-ktv'></view>
+    </navigator>
+    
     <view class='item icon-cinema'></view>
   </view>
+
   <view class='nameRow'>
-  <view class='name'>按摩椅</view>
-  <view class='name'>KTV</view>
-  <view class='name'>电影院</view>  
+    <view class='name'>按摩椅</view>
+    <view class='name'>KTV</view>
+    <view class='name'>电影院</view>  
   </view>
 
   <view class='row'> 

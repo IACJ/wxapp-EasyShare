@@ -1,7 +1,7 @@
 // miniprogram/pages/myorder/myorder.js
 
 const db = wx.cloud.database({})
-
+const util = require('../../utils/util.js')
 Page({
 
   data: {
@@ -21,8 +21,15 @@ Page({
       success: res => {
         console.log('[call success]:')
         console.log(res)
+
+        let orderList = res.result.data
+        orderList.forEach(function (item, index) {
+          console.log(item)
+          item.createTimeStr = util.formatTime(new Date(item.createTime))
+          // console.log(index)
+        })
         that.setData({
-          orderList: res.result.data
+          orderList: orderList
         })
         if (res.result.data.length === 0) {
           that.setData({
