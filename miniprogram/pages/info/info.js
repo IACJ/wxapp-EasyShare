@@ -111,13 +111,10 @@ Page({
     })
     db.collection('info').where({}).get({
       success: function (res) {
-        console.log(res)
-        if (res.data.length === 0) {
-          wx.showToast({
-            title: '没有更多了哦~',
-            duration: 2000
-          })
-        }
+        wx.showToast({
+          title: '没有更多了哦~',
+          duration: 2000
+        })
       },
       complete: function (e) {
         that.setData({
@@ -125,35 +122,7 @@ Page({
         })
       }
     })
-   
-    // wx.request({
-    //   url: 'https://www.iacj.win/matches/painting/list', //仅为示例，并非真实的接口地址
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   data: {
-    //     limit0: this.data.cursor,
-    //     limit1: 5
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data)
-    //     that.setData({
-    //       paintingList: that.data.paintingList.concat(res.data.paintingList),
-    //       cursor: that.data.cursor + res.data.paintingList.length,
-    //     })
-    //     if (res.data.paintingList.length === 0) {
-    //       wx.showToast({
-    //         title: '没有更多了哦~',
-    //         duration: 2000
-    //       })
-    //     }
-    //   },
-    //   fail: function () {
-    //     wx.showToast({
-    //       title: '网络连接失败',
-    //     })
-    //   }
-    // })
+
 
   },
   //点击单选按钮改变,重新进行排序
@@ -161,16 +130,6 @@ Page({
 
   },
 
-
-  /**
-   * 请求数据
-  */
-  frequestData: function (that, targetPage) {
-    wx.request({
-      url: '',
-    });
-
-  },
 
   //用户点击右上角分享
   onShareAppMessage: function () {

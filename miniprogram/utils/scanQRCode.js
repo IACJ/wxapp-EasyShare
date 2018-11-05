@@ -54,10 +54,11 @@ const scanQRCode = function(thatPage,mothed) {
 const tryStartUse = function (thatPage, mothed, share_type, thing_type, thing_numberId) {
 
   let that = this
-  let name = thing_type + '_startUse'
+  let name = 'bike_startUse'
   wx.cloud.callFunction({
     name: name,
     data: {
+      'sort': thing_type,
       'id': Number(thing_numberId)
     },
     success: res => {

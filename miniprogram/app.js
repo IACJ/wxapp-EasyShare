@@ -16,5 +16,44 @@ App({
     this.globalData = {
       'systemInfo': systemInfo
     }
+
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+
+    wx.cloud.callFunction({
+      name: 'getOrderByOpenid',
+      success: res => {
+        console.log('[call success]:')
+        console.log(res)
+        let needCheck = false
+
+        let orderList = res.result.data
+        orderList.forEach(function (item, index) {
+          if (item.status.step === '进行中'){
+            needCheck = true
+          }
+        })
+
+        if (needCheck) {
+          wx.showModal({
+            title: '提示',
+            content: '你有未完成的订单,前往查看？',
+            success: (res)=>{
+              if (res.confirm){
+                wx.navigateTo({
+                  url: '/pages/myorder/myorder',
+                })
+              }
+            }
+          })
+        }
+      },
+      complete:(e)=>{
+        wx.hideLoading()
+      }
+    })
   }
 })
