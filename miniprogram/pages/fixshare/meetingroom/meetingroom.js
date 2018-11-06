@@ -7,7 +7,8 @@ Page({
   data: {
     open: "开锁",
     close: "已关锁",
-    sort: "会议室"
+    sort: "会议室",
+    passageId: "W97QoNx_Lia3NQJp"
   },
 
   /**
@@ -270,5 +271,15 @@ Page({
   },
   outId: function (e) {
     console.log(this.data.id)
-  }
+  },
+
+
+  btnClick: function (e) {
+    if (e) {
+      let targetPath = "/pages/passage/passage" + "?id=" + this.data.passageId
+      wx.navigateTo({
+        url: targetPath,
+      });
+    }
+  },
 })

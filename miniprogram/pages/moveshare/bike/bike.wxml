@@ -41,8 +41,9 @@
     </view>
   </view>
 
+
   <view class='row' style='position:fixed;bottom:100rpx;'> 
-    <view class='item-word' style='background-color:#CDC9C9;color:white;'> 产品说明</view>
+    <view class='item-word' bindtap='btnClick' style='background-color:#CDC9C9;color:white;'> 产品说明</view>
     <view class='item-word' style='background-color:#CDC9C9;color:white;'> 使用说明</view>
     <view class='item-word' style='background-color:#CDC9C9;color:white;'> 计价说明</view>
   </view>
