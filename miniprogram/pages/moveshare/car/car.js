@@ -7,7 +7,8 @@ Page({
   data: {
     open: "开锁",
     close: "已关锁",
-    sort: "汽车"
+    sort: "汽车",
+    passageId: "W96vEKu9e31Z7Kuk"
   },
 
   /**
@@ -270,5 +271,13 @@ Page({
   },
   outId: function (e) {
     console.log(this.data.id)
-  }
+  },
+  btnClick: function (e) {
+    if (e) {
+      let targetPath = "/pages/passage/passage" + "?id=" + this.data.passageId
+      wx.navigateTo({
+        url: targetPath,
+      });
+    }
+  },
 })

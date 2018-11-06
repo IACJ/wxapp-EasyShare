@@ -7,7 +7,8 @@ Page({
   data: {
     open: "开锁",
     close: "已关锁",
-    sort: "充电宝"
+    sort: "充电宝",
+    passageId:"W961U9x_Lia3NQJc"
   },
 
   /**
@@ -270,5 +271,13 @@ Page({
   // },
   outId: function (e) {
     console.log(this.data.id)
-  }
+  },
+  btnClick: function (e) {
+    if (e) {
+      let targetPath = "/pages/passage/passage" + "?id=" + this.data.passageId
+      wx.navigateTo({
+        url: targetPath,
+      });
+    }
+  },
 })

@@ -8,6 +8,7 @@
       longitude="{{longitude}}"
       markers="{{markers}}"
       scale="{{scale}}"
+      bindmarkertap="bindMarkertap"
       bindregionchange='regionChange'
       show-compass
       show-location

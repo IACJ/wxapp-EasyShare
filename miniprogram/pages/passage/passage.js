@@ -9,7 +9,7 @@ Page({
   data: {
     title:'文章加载中',
     titleImg:'/images/1.jpg',
-    itemList:[]
+    itemList:[],
   },
 
   /**

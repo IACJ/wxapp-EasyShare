@@ -38,7 +38,7 @@
   </view>
 
   <view class='row'> 
-    <view class='item'> 产品说明</view>
+    <view class='item' bindtap='btnClick'> 产品说明</view>
     <view class='item'> 使用说明</view>
     <view class='item'> 计价说明</view>
   </view>
