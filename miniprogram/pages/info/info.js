@@ -101,7 +101,6 @@ Page({
         url: targetPath,
       });
     }
-
   },
   //加载更多
   loadMore: function (event) {

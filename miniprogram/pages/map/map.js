@@ -5,11 +5,9 @@ var windowHeight = 0
 var windowWidth = 0
 Page({
   data: {
-
-    // latitude: 23.099994,
-    // longitude: 113.324520,
     markers: [],
-
+    km:1,
+    sort:"bike",
     scale:defaultScale
   },
 
@@ -18,25 +16,7 @@ Page({
     var that = this
     that.changeMapHeight()
     that.requestLocation()
-    //that.setHomeActionLeftDistance()
-    //如果刚从选择地址页面带数据回调回来，则显示选择的地址
-    // console.log(that.data.callbackAddressInfo)
-    // if (that.data.callbackAddressInfo == null) {
-    //   that.getCenterLocation()
-    //   //正在上传的话，不去请求地理位置信息
-    //   if (that.data.showUpload) {
-    //     that.requestLocation()
-    //   }
-    // } else {
-    //   that.setData({
-    //     selectAddress: that.data.callbackAddressInfo.title,
-    //     callbackLocation: that.data.callbackAddressInfo.location
-    //   })
-    //   //置空回调数据，即只使用一次，下次中心点变化后就不再使用
-    //   that.setData({
-    //     callbackAddressInfo: null
-    //   })
-    // }
+    that.getItemList()
   },
 
   onLoad:function (e) {
@@ -61,7 +41,7 @@ Page({
     
   },
 
-  //请求地理位置
+  //请求手机地理位置
   requestLocation: function () {
     var that = this
     wx.getLocation({
@@ -77,7 +57,7 @@ Page({
     })
   },
 
-
+  //定位自身
   selfLocationClick: function () {
     var that = this
     //还原默认缩放级别
@@ -98,7 +78,7 @@ Page({
   },
 
   /**
-   * 得到中心点坐标
+   * 得到地图中心点坐标并搜索周边
    */
   getCenterLocation: function () {
     var that = this
@@ -107,73 +87,97 @@ Page({
       success: function (res) {
         console.log('getCenterLocation----------------------->')
         console.log(res)
-        if(that.data.centerLatitude===undefined){
-          that.setData({
-            centerLatitude:res.latitude,
-            centerLongitude:res.longitude
-          })
-        }
-        else{
-          that.setData({
-            centerLatitude: res.latitude,
-            centerLongitude: res.longitude
-          })
-          wx.cloud.callFunction({
-            name: 'search',
-            data: {
-              sort: 'bike'
-            },
-            success: res => {
-              console.log('call success')
-              var currentMarker = []
-              var markerList = res.result.data
-              for(var key in markerList)
-                console.log(key)
-            },
-            fail: err => {
-              console.log('call fail')
-              console.log(err)
-            }
-          })
-        }
-        //that.updateCenterLocation(res.latitude, res.longitude)
-        //that.regeocodingAddress()
-        //that.queryMarkerInfo()
+        that.setData({
+          centerLatitude:res.latitude,
+          centerLongitude:res.longitude
+        })
+        that.kmToLongitude()
+        that.kmToLatitude()
+        that.setMarker(that.data.list,that.data.centerLatitude,that.data.centerLongitude)
+        // if(that.data.sort!=that.data.temp)
+        //   {
+        //     that.setData({
+        //       temp:that.data.sort
+        //     })
+          // wx.cloud.callFunction({
+          //   name: 'search',
+          //   data: {
+          //     sort: that.data.sort
+          //   },
+          //   success: res => {
+          //     console.log('call success')
+          //     console.log(res)
+          //     that.setData({
+          //       list:res.result.data
+          //     })
+          //     console.log(that.data.list)
+          //     that.setMarker(that.data.list, that.data.centerLatitude, that.data.centerLongitude)
+
+          //   },
+          //   fail: err => {
+          //     console.log('call fail')
+          //     console.log(err)
+          //   }
+          // })
+        // }
       }
     })
   },
 
-  // //更新上传坐标点
-  // updateCenterLocation: function (latitude, longitude) {
-  //   var that = this
-  //   that.setData({
-  //     centerLatitude: latitude,
-  //     centerLongitude: longitude
-  //   })
-  // },
+  //设置周边共享物件
+  setMarker: function (list, centerLatitude, centerLongitude){
+    console.log("createMarker start")
+    if(list!=undefined){
+      let that = this
+      var currentMarker = []
+      var markerList = list
+      for (var i=0;i<markerList.length;i++){
+        var m=markerList[i]
+        if(m.position[0]<that.data.centerLatitude+that.data.long&&
+          m.position[0]>that.data.centerLatitude-that.data.long&&
+          m.position[1]<that.data.centerLongitude+that.data.lat&&
+          m.position[1]>that.data.centerLongitude-that.data.lat){
+            let marker = {}
+            marker.id=m.numberId
+            marker.latitude=m.position[0]
+            marker.longitude=m.position[1]
+            marker.title = m.description+" "+m.numberId
+            currentMarker.push(marker)
+            console.log("marker   "+marker)
+          }
+      }
+      that.setData({
+        markers: currentMarker
+      })
+      console.log("markers"+that.data.markers)
+    }
+  },
 
-  // setMapHeight: function (params) {
-  //   var that = this
-  //   that.setData({
-  //     mapHeight: (windowHeight - bottomHeight) + 'px'
-  //   })
-  //   var controlsWidth = 40
-  //   var controlsHeight = 48
-    //设置中间部分指针
-    // that.setData({
-    //   controls: [{
-    //     id: 1,
-    //     iconPath: '../../images/icon/center-location.png',
-    //     position: {
-    //       left: (windowWidth - controlsWidth) / 2,
-    //       top: (windowHeight - bottomHeight) / 2 - controlsHeight * 3 / 4,
-    //       width: controlsWidth,
-    //       height: controlsHeight
-    //     },
-    //     clickable: true
-    //   }]
-    // })
-  // },
+  //获取数据列表
+  getItemList:function(){
+    let that=this
+    console.log("getItemList start")
+    wx.cloud.callFunction({
+      name: 'search',
+      data: {
+        sort: that.data.sort
+      },
+      success: res => {
+        console.log('call success')
+        console.log(res)
+        that.setData({
+          list: res.result.data
+        })
+        console.log(that.data.list)
+        that.setMarker(that.data.list, that.data.centerLatitude, that.data.centerLongitude)
+
+      },
+      fail: err => {
+        console.log('call fail')
+        console.log(err)
+      }
+    })
+  },
 
   changeMapHeight: function () {
     var that = this
@@ -185,19 +189,30 @@ Page({
           windowHeight : res.windowHeight,
           windowWidth : res.windowWidth
         })
-        //that.setMapHeight()
-        // //创建节点选择器
-        // var query = wx.createSelectorQuery()
-        // query.select('#bottom-layout').boundingClientRect()
-        // query.exec(function (res) {
-        //   console.log(res)
-        //   that.setData({
-        //     bottomHeight : res[0].height
-        //   })
-        // }
       },
     })
+  },
+
+  kmToLongitude:function(){
+    console.log("kmToLongitude start")
+    let that = this
+    that.setData({
+      long:that.data.km/2/111
+    })
+  },
+  kmToLatitude:function(){
+    console.log("kmToLatitude start")
+    let that = this
+     that.setData({
+       lat: that.data.km / 2 / 111 / Math.cos(Math.PI / 180*that.data.centerLatitude)
+     })
+  },
+  //改变物品种类
+  changeSort:function(e){
+    let that=this
+    that.setData({
+      sort: e.detail.value
+    })
+    that.getItemList()
   }
-
-
 })

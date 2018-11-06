@@ -1,6 +1,9 @@
 /* miniprogram/pages/myorder/myorder.wxss */
 .page {
   display: flex;
+  background-color: #EEE9E9;
+  height: 100%;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   padding-bottom: 30rpx;
@@ -12,6 +15,13 @@
   margin: 30rpx;
 }
 
+.orderListContainer{
+  width: 100%;
+}
+
 .orderListItem{
-  border: #0A0 1px dashed
+  width: 100%;
+  background-color: white;
+  margin-bottom: 50rpx;
+  padding: 30rpx;
 }
