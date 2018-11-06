@@ -15,20 +15,17 @@
         wx:key='{{item._id}}'
         bindtap='tapOrder'
         data-order='{{item}}'>
-      <view>
-        订单id:{{item._id}}
+      <view style='font-weight:bold;font-size:16pt;'>
+        {{item.thing_type}}{{item.thing_numberId}}
       </view>
       <view>
-        种类:{{item.thing_type}}
+        订单id: {{item._id}}
       </view>
       <view>
-        编号:{{item.thing_numberId}}
+        创建时间: {{item.createTimeStr}}
       </view>
       <view>
-        创建时间:{{item.createTimeStr}}
-      </view>
-      <view>
-        状态:{{item.status.step}}
+        状态: {{item.status.step}}
       </view>
     
     </view>
