@@ -7,13 +7,23 @@
   height: 100rpx;
   position: absolute;
   bottom: 0;
-  left: 0;
+  right: 0;
   padding-bottom:50px; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.cover-selected {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-bottom:100px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .self-location {
   width: 76rpx;
   height: 76rpx;

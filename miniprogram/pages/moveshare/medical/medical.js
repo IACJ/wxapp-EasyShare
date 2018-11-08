@@ -1,4 +1,6 @@
 // miniprogram/pages/moveshare/medical/medical.js
+const { scanQRCode } = require('../../../utils/scanQRCode.js')
+var app=getApp()
 Page({
 
   /**
@@ -108,20 +110,21 @@ Page({
     })
   },
   scanToChoose: function (e) {
-    wx.scanCode({
-      success: function (res) {
-        console.log('扫码success')
-        console.log(res)
-      },
-      fail: function (err) {
-        console.log('扫码fail')
-        console.log(err)
-        wx.showToast({
-          title: '未能识别二维码',
-          icon: 'none'
-        })
-      }
-    })
+    scanQRCode(this, 'redirect')
+    // wx.scanCode({
+    //   success: function (res) {
+    //     console.log('扫码success')
+    //     console.log(res)
+    //   },
+    //   fail: function (err) {
+    //     console.log('扫码fail')
+    //     console.log(err)
+    //     wx.showToast({
+    //       title: '未能识别二维码',
+    //       icon: 'none'
+    //     })
+    //   }
+    // })
   },
   tryStartUse: function (id) {
     let that = this
@@ -282,4 +285,10 @@ Page({
       });
     }
   },
+  bindToMap: function () {
+    app.sortWord = 'medical'
+    wx.switchTab({
+      url: "../../map/map",
+    })
+  }
 })

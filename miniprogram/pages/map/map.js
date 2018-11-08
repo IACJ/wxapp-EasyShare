@@ -3,6 +3,7 @@ const defaultScale = 18
 var bottomHeight = 0
 var windowHeight = 0
 var windowWidth = 0
+var app=getApp()
 Page({
   data: {
     markers: [],
@@ -11,18 +12,19 @@ Page({
     scale:defaultScale
   },
 
-  onShow:function(e){
+  onShow:function(options){
     console.log('onShow--------------------->')
     var that = this
+    if(app.sortWord){
+      that.setData({
+        sort:app.sortWord
+      })
+      console.log("app.sortWord " + app.sortWord)
+      console.log("that.data.sort "+that.data.sort)
+    }
     that.changeMapHeight()
     that.requestLocation()
     that.getItemList()
-  },
-
-  onLoad:function (e) {
-    // this.setData({
-    //   'windowHeight': getApp().globalData.systemInfo.windowHeight
-    // })
   },
 
   onReady: function (e) {
@@ -133,7 +135,8 @@ Page({
       var markerList = list
       for (var i=0;i<markerList.length;i++){
         var m=markerList[i]
-        if(m.position[0]<that.data.centerLatitude+that.data.long&&
+        if(m.status.isUsing===false&&
+          m.position[0]<that.data.centerLatitude+that.data.long&&
           m.position[0]>that.data.centerLatitude-that.data.long&&
           m.position[1]<that.data.centerLongitude+that.data.lat&&
           m.position[1]>that.data.centerLongitude-that.data.lat){
@@ -142,6 +145,7 @@ Page({
             marker.latitude=m.position[0]
             marker.longitude=m.position[1]
             marker.title = m.description+" "+m.numberId
+            marker.sort=that.data.sort
             currentMarker.push(marker)
             console.log("marker   "+marker)
           }
@@ -168,7 +172,6 @@ Page({
         that.setData({
           list: res.result.data
         })
-        console.log(that.data.list)
         that.setMarker(that.data.list, that.data.centerLatitude, that.data.centerLongitude)
 
       },
@@ -213,6 +216,39 @@ Page({
     that.setData({
       sort: e.detail.value
     })
+    app.sortWord=that.data.sort
     that.getItemList()
+  },
+  bindMarkertap:function(e){
+    let that=this
+    that.setData({
+      thingId:e.markerId
+    })
+    console.log(that.data.thingId)
+  },
+  selected:function(e){
+    let that=this
+    if(that.data.thingId){
+      wx.showModal({
+        title: '确认使用？',
+        content: '确认使用' + that.data.thingId + '？',
+        success: function (e) {
+          console.log(e);
+          if (e.confirm) {
+            wx.navigateTo({
+              url: '../moveshare/'+that.data.sort+"/"+that.data.sort+"?id="+that.data.thingId+"&type=open",
+            })
+            that.setData({
+              thingId:null
+            })
+          }
+        }
+      })
+    }
+    else{
+      wx.showToast({
+        title: '请先选择物品',
+      })
+    }
   }
 })
