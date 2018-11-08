@@ -101,22 +101,22 @@ Page({
       url: '../charge/charge',
     })
   },
-  // 游戏券
+  // 优惠券
   showTicket: function () {
     wx.showModal({
       title: "",
-      content: "你没有用车券了",
+      content: "当前没有可用优惠券",
       showCancel: false,
-      confirmText: "好吧",
+      confirmText: "我知道了",
     })
   },
   // 押金退还
   showDeposit: function () {
     wx.showModal({
       title: "",
-      content: "押金会立即退回，退款后，您将不能使用自助游戏机，确认要进行此退款吗？",
+      content: "押金会立即退回，退款后，您将不能继续使用任何共享物品，确认要进行此退款吗？",
       cancelText: "继续使用",
-      cancelColor: "#b9dd08",
+      cancelColor: "##5F9EA0",
       confirmText: "押金退款",
       confirmColor: "#ccc",
       success: (res) => {
