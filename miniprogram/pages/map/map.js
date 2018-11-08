@@ -16,11 +16,11 @@ Page({
     console.log('onShow--------------------->')
     var that = this
     if(app.sortWord){
-      that.setData({
-        sort:app.sortWord
-      })
+      // that.setData({
+      //   sort:app.sortWord
+      // })
       console.log("app.sortWord " + app.sortWord)
-      console.log("that.data.sort "+that.data.sort)
+      // console.log("that.data.sort "+that.data.sort)
     }
     that.changeMapHeight()
     that.requestLocation()

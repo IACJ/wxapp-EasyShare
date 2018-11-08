@@ -1,5 +1,6 @@
 // miniprogram/pages/moveshare/umbrella/umbrella.js
 const { scanQRCode } = require('../../../utils/scanQRCode.js')
+var app=getApp()
 Page({
 
   /**
@@ -282,4 +283,10 @@ Page({
       });
     }
   },
+  bindToMap: function () {
+    app.sortWord = 'umbrella'
+    wx.switchTab({
+      url: "../../map/map",
+    })
+  }
 })
