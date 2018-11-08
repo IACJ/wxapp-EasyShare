@@ -10,42 +10,42 @@
       
     <navigator url='../wallet/wallet'>
       <view class='me__item'>
-        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
-        <text> 我的钱包 </text> 
+        <image src='../../images/icon/purse.png' style='width:20px;height:20px;'></image>
+        <text style='padding-left:20rpx;'> 我的钱包 </text> 
       </view>
     </navigator>  
 
     <navigator url='../profile/profile?nickName={{userInfo.nickName}}'>
       <view class='me__item'>
-        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
-        <text> 修改资料 </text> 
+        <image src='../../images/icon/pen.png' style='width:20px;height:20px;'></image>
+        <text style='padding-left:20rpx;'> 修改资料 </text> 
       </view>
     </navigator>
     
     <navigator  url='../myorder/myorder'>
       <view class='me__item'>
-        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
-        <text> 我的订单 </text>
+        <image src='../../images/icon/list.png' style='width:20px;height:20px;'></image>
+        <text style='padding-left:20rpx;'> 我的订单 </text>
       </view>
     </navigator>
     
     <navigator  url='../time/time'>
       <view class='me__item'> 
-        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
-        <text> 时长记录 </text>         
+        <image src='../../images/icon/time.png' style='width:20px;height:20px;'></image>
+        <text style='padding-left:20rpx;'> 时长记录 </text>         
       </view>
     </navigator>  
      
     <navigator url='../feedback/feedback'> 
       <view class='me__item'> 
-        <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
-        <text> 我要反馈 </text>  
+        <image src='../../images/icon/complain.png' style='width:20px;height:20px;'></image>
+        <text style='padding-left:20rpx;'> 我要反馈 </text>  
       </view>
     </navigator>  
 
     <view class='me__item' bindtap='actiondel'>
-      <image src='../../images/首页.png' style='width:20px;height:20px;'></image>
-      <text> 联系客服 </text> 
+      <image src='../../images/icon/call.png' style='width:20px;height:20px;'></image>
+      <text style='padding-left:20rpx;'> 联系客服 </text> 
     </view>   
   </view>
    

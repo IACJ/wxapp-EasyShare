@@ -1,7 +1,7 @@
 /* pages/wallet/wallet.wxss */
  
 page{
-  background-color: #f3f7f3;
+  background-color: #EEE9E9;
 }
 .overage{
     
@@ -51,7 +51,7 @@ page{
  
 }
 .c-y{
-    color: #b9dd08;
+    color: #5F9EA0;
      
 }
 .c-g{
@@ -64,9 +64,8 @@ page{
 .btn-charge{
   width: 80%;
   height: 40px;
-  background-color: #d8f440;
+  background-color: #5F9EA0;
   top:20px;
-  
 }
 .my-ticket {
   height: 40px;
