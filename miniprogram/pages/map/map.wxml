@@ -20,11 +20,11 @@
     <cover-view class=''>
     
     </cover-view>
-    <cover-view class='cover-layout' bindtap='selfLocationClick'>
-      <cover-image class='self-location' src='../../images/icon/self-location.png'></cover-image>
+    <cover-view class='cover-layout' >
+      <cover-image class='self-location' src='../../images/icon/self-location.png' bindtap='selfLocationClick'></cover-image>
     </cover-view>
-    <cover-view class='cover-selected' bindtap='selected'>
-      <cover-image class='self-location' src='../../images/icon/ok.png'></cover-image>
+    <cover-view class='cover-selected' >
+      <cover-image class='self-location' src='../../images/icon/ok.png' bindtap='selected'></cover-image>
     </cover-view>
   </view>
 
