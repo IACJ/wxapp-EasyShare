@@ -1,5 +1,7 @@
 // miniprogram/pages/moveshare/bike/bike.js
 const { scanQRCode } = require('../../../utils/scanQRCode.js')
+var app=getApp()
+
 Page({
 
   /**
@@ -16,12 +18,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that=this
     console.log(options)
     if (options.id){
       this.setData({
         'inputId': options.id,
         'id': options.id
       })
+    }
+    if(options.type==="open"){
+      that.tryStartUse(options.id)
     }
   },
 
@@ -270,4 +276,10 @@ Page({
       });
     }
   },
+  bindToMap:function(){
+    app.sortWord='bike'
+    wx.switchTab({
+      url: "../../map/map",
+    })
+  }
 })

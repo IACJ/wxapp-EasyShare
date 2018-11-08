@@ -47,7 +47,7 @@
 }
 .item-word{
   margin-top:20rpx;
-  width: 200rpx;
+  width: 150rpx;
   height: 100rpx;
   text-align: center;
   line-height: 100rpx;
