@@ -61,6 +61,11 @@ Page({
 
   //定位自身
   selfLocationClick: function () {
+
+    wx.showToast({
+      title: '定位到你的位置',
+      icon: 'none'
+    })
     var that = this
     //还原默认缩放级别
     that.setData({
@@ -248,6 +253,7 @@ Page({
     else{
       wx.showToast({
         title: '请先选择物品',
+        icon: 'none'
       })
     }
   }

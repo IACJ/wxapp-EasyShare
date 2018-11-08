@@ -290,5 +290,13 @@ Page({
     wx.switchTab({
       url: "../../map/map",
     })
+  },
+  lockChange: function (e) {
+    console.log(e)
+    if (this.data.open === '开锁') {
+      this.unlock()
+    } else {
+      this.lock()
+    }
   }
 })

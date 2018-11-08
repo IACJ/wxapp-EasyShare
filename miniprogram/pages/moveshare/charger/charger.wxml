@@ -30,7 +30,7 @@
       <view class='item-word' style='background-color: #B0E0E6;border-radius: 30rpx;' bindtap='lock'>{{close}}</view>
     </view>
     <view class='row'>
-    <switch checked="{{open}}" bindchange="{{close}}"></switch>
+    <switch checked="{{open === '开锁'}}" bindchange="lockChange"></switch>
     </view>
     <view class='row'> 
       <navigator url='../../feedback/feedback?id={{id}}&sort={{sort}}'>
