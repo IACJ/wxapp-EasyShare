@@ -59,7 +59,8 @@ const tryStartUse = function (thatPage, mothed, share_type, thing_type, thing_nu
     name: name,
     data: {
       'sort': thing_type,
-      'id': Number(thing_numberId)
+      'id': Number(thing_numberId),
+      'shareType': share_type
     },
     success: res => {
       console.log('callFunction success:')

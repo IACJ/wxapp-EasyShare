@@ -89,7 +89,7 @@ Page({
   overageDesc: function () {
     wx.showModal({
       title: "",
-      content: "充值余额5.00元+活动赠送余额3.00元",
+      content: "为了减少小程序审核负担，暂未拉起真实支付系统",
       showCancel: false,
       confirmText: "我知道了",
     })

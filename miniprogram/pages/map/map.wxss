@@ -19,3 +19,14 @@
   height: 76rpx;
 }
 
+.coverViewLine {
+  position: absolute;
+  bottom: 50% ;
+  left: 335rpx;
+}
+
+.coverArrow {
+  width: 80rpx;
+  height: 80rpx;
+  position: relative;
+}

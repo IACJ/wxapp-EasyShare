@@ -27,3 +27,9 @@
 
 
 </view>
+
+
+<cover-view class= "coverViewLine"> 
+  <cover-image class='coverArrow' src='/images/icon/center-location.png'></cover-image>
+</cover-view>
+
