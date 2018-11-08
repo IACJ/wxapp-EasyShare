@@ -1,5 +1,7 @@
 // miniprogram/pages/moveshare/camera/camera.js
 const { scanQRCode } = require('../../../utils/scanQRCode.js')
+var app = getApp()
+
 Page({
 
   /**
@@ -284,4 +286,10 @@ Page({
       });
     }
   },
+  bindToMap: function () {
+    app.sortWord = 'camera'
+    wx.switchTab({
+      url: "../../map/map",
+    })
+  }
 })
