@@ -248,6 +248,7 @@ Page({
     else{
       wx.showToast({
         title: '请先选择物品',
+        icon: 'loading'
       })
     }
   }

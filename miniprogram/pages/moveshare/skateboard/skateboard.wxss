@@ -73,3 +73,21 @@
 .controlArea{
   width: 100%;
 }
+
+.wx-switch-input{
+width:242rpx !important;
+height:70rpx !important;
+margin:0 !important;
+padding: 0 !important;
+background: #B0E0E6 !important;
+border: #B0E0E6 !important;
+}
+.wx-switch-input::before{
+width:240rpx !important;
+height:70rpx !important;
+background: #B0E0E6 !important;
+}
+.wx-switch-input::after{
+width:198rpx !important;
+height:70rpx !important;
+}

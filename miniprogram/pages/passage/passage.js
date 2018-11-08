@@ -7,9 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:'文章加载中',
-    titleImg:'/images/1.jpg',
-    itemList:[],
+    itemList:[]
   },
 
   /**
