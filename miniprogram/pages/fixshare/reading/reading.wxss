@@ -1,38 +1,69 @@
 /* miniprogram/pages/fixshare/reading/reading.wxss */
 .page {
-  border: 1rpx #f00 solid;
-  margin: 20rpx;
-  padding: 30rpx;
-
+  background-color: #F0FFFF;
+  height: 100%;
+  width: 100%;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.title {
-  text-align: center;
-  font-size: 18pt;
+.icon-reading{
+  background-image: url("data:image/png;base64,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");
+  background-size: cover;
 }
 .row {
   width: 100%;
   margin-top: 30rpx;
-  border: 1px solid #0f0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
-
+.row-lock {
+  width: 100%;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.btnScan{
+  width: 90%;
+  height: 150rpx;
+  margin-bottom: 10rpx;
+  text-align: center;
+  line-height: 150rpx;
+  font-size: 16pt;
+  color: white;
+  background-color: #CDC9C9;
+}
 .item{
+  margin-top:20rpx;
   width: 200rpx;
   height: 200rpx;
-  border: 1px solid #00f;
+  text-align: center;
+  line-height: 200rpx;
 }
-
+.item-word{
+  margin-top:20rpx;
+  width: 150rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+.line{
+  background: #CDC9C9;
+  width: 30%;
+  height: 5rpx;
+}
 .input{
-  width: 300rpx;
+  width: 400rpx;
+  height: 100rpx;
+  background-color: white;
+  border: 1px solid #CDC9C9;
   font-size: 20pt;
-  border-bottom: #AAA;
-  z-index: 2;
+  text-align: center;
 }
 
 .chooseIdArea{

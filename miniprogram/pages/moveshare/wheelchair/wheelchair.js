@@ -1,5 +1,6 @@
 // miniprogram/pages/moveshare/wheelchair/wheelchair.js
 const { scanQRCode } = require('../../../utils/scanQRCode.js')
+var app=getApp()
 Page({
 
   /**
@@ -284,4 +285,10 @@ Page({
       });
     }
   },
+  bindToMap: function () {
+    app.sortWord = 'wheelchair'
+    wx.switchTab({
+      url: "../../map/map",
+    })
+  }
 })

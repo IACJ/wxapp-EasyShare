@@ -1,5 +1,6 @@
 // miniprogram/pages/moveshare/wheel/wheel.js
 const { scanQRCode } = require('../../../utils/scanQRCode.js')
+var app=getApp()
 Page({
 
   /**
@@ -284,4 +285,10 @@ Page({
       });
     }
   },
+  bindToMap: function () {
+    app.sortWord = 'wheel'
+    wx.switchTab({
+      url: "../../map/map",
+    })
+  }
 })

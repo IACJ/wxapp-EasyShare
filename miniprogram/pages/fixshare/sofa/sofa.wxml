@@ -1,21 +1,19 @@
 <!--miniprogram/pages/fixshare/sofa/sofa.wxml-->
+
 <view class='page'>
-  <view class='title'> 共享沙发 </view>
-
-
+<view class='item icon-sofa'></view>
   <view class='chooseIdArea'wx:if='{{!id}}' >
     <view class='row'> 
-      <view class='item' bindtap='scanToChoose'> 扫码选中</view>
+      <view class='btnScan' bindtap='scanToChoose'> 扫码选中</view>
     </view>
 
     <view class='row'> 
-      <view class='item' bindtap='chooseId'> 编号选中</view>
       <input class='input' 
-        placeholder='________' 
         type='number' 
         maxlength='8'
         value='{{id}}'
         bindinput='bindinput'></input>
+        <view class='item-word' style='background-color: #B0E0E6;border-radius: 30rpx;' bindtap='chooseId'> 编号选中</view>
     </view>
   </view>
   <view class='controlArea' wx:else>
@@ -27,25 +25,28 @@
         value='{{inputId}}'
         bindinput='bindinput'></input>
     </view>
-    <view class='row'> 
-      <!-- <view class='item' bindtap='unlock'>{{open}}</view>
-      <view class='item' bindtap='lock'>{{close}}</view> -->
-      <view >已开始计时</view>
+    <!-- <view class='row' style='justify-content: center;'> 
+      <view class='item-word' style='background-color: #B0E0E6;border-radius: 30rpx;' bindtap='unlock'>{{open}}</view>
+      <view class='line'></view>
+      <view class='item-word' style='background-color: #B0E0E6;border-radius: 30rpx;' bindtap='lock'>{{close}}</view>
     </view>
+    <view class='row'>
+    <switch checked="{{open}}" bindchange="{{close}}"></switch>
+    </view> -->
     <view class='row'> 
       <navigator url='../../feedback/feedback?id={{id}}&sort={{sort}}'>
-        <view class='item' bindtap='outId'>反馈故障</view>
+        <view class='item-word' bindtap='outId' style='background-color: #FA8072;border-radius: 30rpx;'>反馈故障</view>
       </navigator>
-      <view class='item' bindtap='btnStopUse'>结束使用</view>
+      <view class='item-word' bindtap='btnStopUse' style='background-color: #B0E0E6;border-radius: 30rpx;'>结束使用</view>
     </view>
   </view>
 
-  <view class='row'> 
-    <view class='item' bindtap='btnClick'> 产品说明</view>
-    <view class='item'> 使用说明</view>
-    <view class='item'> 计价说明</view>
+
+  <view class='row' style='position:fixed;bottom:100rpx;'> 
+    <view class='item-word' bindtap='btnClick' style='background-color:#CDC9C9;color:white;'> 产品说明</view>
+    <view class='item-word' style='background-color:#CDC9C9;color:white;'> 使用说明</view>
+    <view class='item-word' style='background-color:#CDC9C9;color:white;'> 计价说明</view>
+    <view class='item-word' bindtap='bindToMap'style='background-color:#CDC9C9;color:white;'>地图寻物</view>
   </view>
 
 </view>
-
-
