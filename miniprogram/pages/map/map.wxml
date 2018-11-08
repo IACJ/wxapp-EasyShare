@@ -23,6 +23,9 @@
     <cover-view class='cover-layout' bindtap='selfLocationClick'>
       <cover-image class='self-location' src='../../images/icon/self-location.png'></cover-image>
     </cover-view>
+    <cover-view class='cover-selected' bindtap='selected'>
+      <cover-image class='self-location' src='../../images/icon/ok.png'></cover-image>
+    </cover-view>
   </view>
 
 
