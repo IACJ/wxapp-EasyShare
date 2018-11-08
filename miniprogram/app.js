@@ -27,7 +27,7 @@ App({
       name: 'getOrderByOpenid',
       success: res => {
         console.log('[call success]:')
-        console.log(res)
+        // console.log(res)
         let needCheck = false
 
         let orderList = res.result.data

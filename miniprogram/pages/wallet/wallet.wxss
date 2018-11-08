@@ -51,8 +51,7 @@ page{
  
 }
 .c-y{
-    color: #5F9EA0;
-     
+    color: #5F9EA0;  
 }
 .c-g{
     padding-top: 20px;

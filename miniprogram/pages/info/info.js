@@ -10,14 +10,6 @@ Page({
       { selected: false, imageSource: '../../images/3.jpg' }
     ],
     containerShow: true,
-    //四大功能模块数据
-    selectState: [1, 0, 0, 0],
-    //三大推荐
-    items: [
-      { name: 'attention', value: '关注', checked: 'true' },
-      { name: 'recommend', value: '推荐' },
-      { name: 'heat', value: '热度' }
-    ],
     //图片展示页列表
     infoList: [],
     cursor: 0,
@@ -31,11 +23,11 @@ Page({
     })
     db.collection('info').where({}).get({
       success: function(res) {
-        console.log(res)
+        // console.log(res)
         if (res.data.length === 0) {
           wx.showToast({
-            title: '没有更多了哦~',
-            icon: 'none'
+            title: '没有更多了',
+            icon: 'loading'
           })
         } else {
           that.setData({
@@ -65,34 +57,6 @@ Page({
     });
   },
 
-  //点击四大功能模块
-  clickBuypaint: function () {
-    this.setData({
-      selectState: [1, 0, 0, 0],
-    })
-
-  },
-  //点击四大功能模块-
-  clickLadderclass: function () {
-    this.setData({
-      selectState: [0, 1, 0, 0],
-    })
-    
-  },
-  //点击四大功能模块-
-  clickPublicwindow: function () {
-    this.setData({
-      selectState: [0, 0, 1, 0],
-    })
-  
-  },
-  //点击四大功能模块-
-  clickJointly: function () {
-    this.setData({
-      selectState: [0, 0, 0, 1],
-    })
-
-  },
   //点击下面的图片列表的时候
   onItemClick: function (event) {
     if (event.currentTarget.dataset.id != null) {
@@ -111,7 +75,8 @@ Page({
     db.collection('info').where({}).get({
       success: function (res) {
         wx.showToast({
-          title: '没有更多了哦~',
+          title: '没有更多了',
+          icon: 'loading',
           duration: 2000
         })
       },
@@ -134,7 +99,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: 'Easy Share',
-      desc: '分享个小程序，希望你喜欢',
+      desc: '分享我正在使用的小程序',
       success: function (res) {
         //转发成功
         wx.showToast({
