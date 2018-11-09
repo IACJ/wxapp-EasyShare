@@ -1,23 +1,24 @@
 /* miniprogram/pages/feedback/feedback.wxss */
 page{
-  background-color: #f3f7f3;
+  background-color: #EEE9E9;
   display: flex;
   flex-direction: column;
 }
  .title{
   margin : 5px;
-  font-size: 12px;
-  color:#808080;
+  font-size: 12pt;
+  color:#8B8989;
 
  }
 .textarea-opinion{
+  width: 85%;
   position: relative;
   background-color: #fff;
   margin: 0 auto;
-  /* padding: 10rpx 0;  */
   border-radius: 10rpx;
 }
 .textarea-phone{
+  width: 85%;
   position: relative;
   background-color: #fff;
   margin: 0 auto;
@@ -25,20 +26,22 @@ page{
   border-radius: 10rpx;
 }
 .btn-commit{
-  width: 90%;
+  width: 75%;
   height: 40px;
-  background-color: #d8f440;
-  margin-top:15px;
+  background-color: #5F9EA0;
+  color: white;
+  margin-top:30px;
 }
 textarea{
-  width: 95%;
+  width: 85%;
   height: 73px;
 }
 .input-opinion{  
+  width: 85%;
   margin: 0 10px;
   border: 1px solid #fff;  
   padding-bottom: 20px;
-  font-size: 15px;
+  font-size: 10pt;
 }   
 ::-webkit-scrollbar{
   width:0;
@@ -46,23 +49,22 @@ textarea{
   color: transparent;
 } 
 .input-phone{  
+  width: 85%;
   margin-left: 10px;
   border: 1px solid #fff;  
-  font-size: 15px;
+  font-size: 10pt;
 }
 .showtextnum{
   margin-top: -20px;
   margin-right: 10px;
   float: right;
-  font-size: 12px;
-  color: #808080;
+  font-size: 10pt;
 }
 .showphonenum{
   margin-top: -20px;
   margin-right: 10px;
   float: right;
-  font-size: 12px;
-  color: #808080;
+  font-size: 10pt;
 }
 .inputLabel{  
   flex: 0.3;
@@ -70,6 +72,7 @@ textarea{
   margin-right: 20rpx;
 }  
 .input-view{  
+  width: 85%;
   position: relative;
   background-color: #fff;
   margin: 0 auto;
@@ -79,5 +82,5 @@ textarea{
 .picker, .input-number{  
   margin-left: 10px;
   background-color: #FFFFFF;  
-  font-size: 15px;
+  font-size: 10pt;
 }  

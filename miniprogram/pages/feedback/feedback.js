@@ -11,7 +11,7 @@ Page({
   data: {
     num:0,
     phonenum:0,
-    array:['汽车','单车','三轮','充电宝','摄像机','医疗箱','雨伞','滑板','轮椅'],
+    array:['汽车','自行车','三轮车','充电宝','摄像机','医疗箱','雨伞','滑板','轮椅'],
     opinion:'',
     phone:'',
   },
@@ -104,14 +104,14 @@ Page({
     if(this.data.opinion===''){
       wx.showToast({
         title: '请填写反馈内容',
-        image: '../../images/icon/xx.png',
+        image: '../../images/icon/warn.png',
       })
       return
     }
     if (this.data.phone!=''&&!/^(?:13\d|15\d|18\d|17\d)\d{5}(\d{3}|\*{3})$/.test(this.data.phone)){
       wx.showToast({
         title: '手机号错误',
-        image:'../../images/icon/xx.png',
+        image:'../../images/icon/warn.png',
       })
       return 
     }
@@ -140,7 +140,7 @@ Page({
         console.log('失败',JSON.stringify(res))
         wx.showToast({
           title: '网络异常，请重新打开此页面。',
-          image: '../../images/icon/xx.png',  //TODO:
+          image: '../../images/icon/warn.png',  //TODO:
         })
       }
     })

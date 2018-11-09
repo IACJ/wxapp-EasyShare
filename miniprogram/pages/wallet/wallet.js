@@ -116,7 +116,7 @@ Page({
       title: "",
       content: "押金会立即退回，退款后，您将不能继续使用任何共享物品，确认要进行此退款吗？",
       cancelText: "继续使用",
-      cancelColor: "##5F9EA0",
+      cancelColor: "#5F9EA0",
       confirmText: "押金退款",
       confirmColor: "#ccc",
       success: (res) => {
@@ -128,15 +128,6 @@ Page({
           })
         }
       }
-    })
-  },
-  // 关于自助游戏机
-  showInvcode: function () {
-    wx.showModal({
-      title: "自助游戏机",
-      content: "微信服务号：狼",
-      showCancel: false,
-      confirmText: "好玩"
     })
   },
   onPullDownRefresh: function () {

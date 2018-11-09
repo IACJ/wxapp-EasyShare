@@ -18,7 +18,7 @@
     <navigator url='../profile/profile?nickName={{userInfo.nickName}}'>
       <view class='me__item'>
         <image src='../../images/icon/pen.png' style='width:20px;height:20px;'></image>
-        <text style='padding-left:20rpx;'> 修改资料 </text> 
+        <text style='padding-left:20rpx;'> 我的资料 </text> 
       </view>
     </navigator>
     
@@ -28,29 +28,19 @@
         <text style='padding-left:20rpx;'> 我的订单 </text>
       </view>
     </navigator>
-    
-    <navigator  url='../time/time'>
-      <view class='me__item'> 
-        <image src='../../images/icon/time.png' style='width:20px;height:20px;'></image>
-        <text style='padding-left:20rpx;'> 时长记录 </text>         
-      </view>
-    </navigator>  
      
     <navigator url='../feedback/feedback'> 
       <view class='me__item'> 
         <image src='../../images/icon/complain.png' style='width:20px;height:20px;'></image>
-        <text style='padding-left:20rpx;'> 我要反馈 </text>  
+        <text style='padding-left:20rpx;'> 反馈投诉 </text>  
       </view>
     </navigator>  
 
     <view class='me__item' bindtap='actiondel'>
       <image src='../../images/icon/call.png' style='width:20px;height:20px;'></image>
       <text style='padding-left:20rpx;'> 联系客服 </text> 
-    </view>   
+    </view>
   </view>
-   
-
-
-  <button wx:if='{{!userInfo}}'class="me__btn" open-type='getUserInfo' bindgetuserinfo='getuserinfo' type="primary">登录</button> 
-  <button wx:else type='warn' class="me__btn" bindtap="btnLogout">退出登录</button>
+   <button wx:if='{{!userInfo}}'class="me__btn" open-type='getUserInfo' bindgetuserinfo='getuserinfo' type="primary">登录</button> 
+   <button wx:else type='warn' class="me__btn" bindtap="btnLogout">退出登录</button>
 </view>

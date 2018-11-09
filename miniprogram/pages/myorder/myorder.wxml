@@ -1,7 +1,7 @@
 <!--miniprogram/pages/myorder/myorder.wxml-->
 <view class='page'>
   <view class='title'>
-   我的订单
+<image src='../../images/icon/mylist.png' style='width:80px;height:80px;'></image>
   </view>
 
   <view wx:if='{{msg}}'>
@@ -15,7 +15,7 @@
         wx:key='{{item._id}}'
         bindtap='tapOrder'
         data-order='{{item}}'>
-      <view style='font-weight:bold;font-size:16pt;'>
+      <view style='font-weight:bold;font-size:16pt;color: #5F9EA0;'>
         {{item.thing_type}}{{item.thing_numberId}}
       </view>
       <view>

@@ -1,6 +1,9 @@
 /* pages/charge/charge.wxss */
 .cont{
-  background-color: #f7f9f7;
+  background-color: #EEE9E9;
+  height: 100%;
+  width: 100%;
+  position:fixed;
   display: flex;
   flex-direction: column;
 }
@@ -26,7 +29,8 @@
 .btn-charge{
   width: 90%;
   height: 40px;
-  background-color: #d8f440;
+  background-color: #5F9EA0;
+  color: white;
   margin-top:20px;
 }
  

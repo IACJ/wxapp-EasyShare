@@ -20,8 +20,10 @@
 }
 
 .orderListItem{
-  width: 100%;
+  width: 85%;
   background-color: white;
+  border-radius: 20rpx;
   margin-bottom: 50rpx;
+  margin-left: 20rpx;
   padding: 30rpx;
 }

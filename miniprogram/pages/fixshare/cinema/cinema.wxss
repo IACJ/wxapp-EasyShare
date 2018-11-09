@@ -1,6 +1,6 @@
 /* miniprogram/pages/fixshare/cinema/cinema.wxss */
 .page {
-  background-color: #F0FFFF;
+  background-color: #FFFACD;
   height: 100%;
   width: 100%;
   position: fixed;
