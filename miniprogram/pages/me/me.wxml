@@ -29,12 +29,12 @@
       </view>
     </navigator>
     
-    <navigator  url='../time/time'>
-      <view class='me__item'> 
+  
+      <view class='me__item' bindtap='timeRecord'> 
         <image src='../../images/icon/time.png' style='width:20px;height:20px;'></image>
         <text style='padding-left:20rpx;'> 时长记录 </text>         
       </view>
-    </navigator>  
+ 
      
     <navigator url='../feedback/feedback'> 
       <view class='me__item'> 

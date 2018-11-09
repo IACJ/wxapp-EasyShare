@@ -59,12 +59,6 @@
         "selectedIconPath": "images/icon/messagef.png"
       },
       {
-        "pagePath": "pages/test/test",
-        "text": "测试",
-        "iconPath": "images/icon/test.png",
-        "selectedIconPath": "images/icon/testf.png"
-      },
-      {
         "pagePath": "pages/map/map",
         "text": "地图",
         "iconPath": "images/icon/map.png",
