@@ -33,10 +33,10 @@ margin-right:10px;margin-bottom: 10px;}
     position: relative;
 }
 .image-work{
-  width:90%;
+  width:100%;
   color: #8B8989;
   margin: 20rpx;
-  height:150rpx; 
+  height:300rpx; 
 }
 
 .title {
