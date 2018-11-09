@@ -17,18 +17,13 @@
      
     <view class='button'> <button bindtap="movetoCharge" class="btn-charge">充值</button></view>
     <view bindtap="showTicket" class="my-ticket tapbar">
-        <text >我的游戏券</text>
+        <text >我的优惠券</text>
         <text><text class="c-g">{{ticket}}张</text>></text>
     </view>
     <view bindtap="showDeposit" class="my-deposit tapbar">
         <text>我的押金</text>
         <text><text class="c-y">99元，押金退款</text>></text>
     </view>
-    <view bindtap="showInvcode" class="my-invcode tapbar">
-        <text>关于自助游戏机</text>
-        <text>></text>
-    </view>
-    <view></view>
 </view>
 
  

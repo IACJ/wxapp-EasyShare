@@ -1,6 +1,6 @@
 /* pages/profile/profile.wxss */
 .page{  
-  background: #f5f5f5; 
+  background: #EEE9E9; 
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -17,12 +17,12 @@
 .inputLabel{  
   flex: 0.3;
   margin-left: 40rpx;
-  margin-right: 20rpx;
+  color:#8B8989;
 }  
 .inputView{  
   flex: 0.7;
-  margin-left: 20rpx;
-  margin-right: 40rpx;
+  margin-left: 10rpx;
+  margin-right: 20rpx;
 }  
 
  
@@ -40,7 +40,6 @@
   width: 120px;
 }  
 .picker{  
-
   border: 1px solid #cccccc;  
   background-color: #FFFFFF;  
 }  

@@ -69,14 +69,6 @@
     </view>      
   </view>
 
-  <!--是否显示-->
-  <view class="row">  
-    <view class="inputLabel">是否显示:</view>  
-    <view class='inputView'>  
-      <switch bindchange="bindShowChange" checked="{{show}}" name="isshow"/>  
-    </view>  
-  </view>  
-
 
   <!--提交 重置-->
   <view class="row">  
